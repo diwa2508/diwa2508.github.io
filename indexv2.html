@@ -1,0 +1,3321 @@
+<html>
+   <head>
+      <style id="st_globalStyles">
+         /* SCROLLBAR */
+         [dark-scroll]::-webkit-scrollbar {
+         width: 10px;
+         height: 10px;
+         }
+         [dark-scroll]::-webkit-scrollbar-track-piece {
+         background-color: #2b2b2b;
+         border: 1px solid #1d1d1d;
+         }
+         [dark-scroll]::-webkit-scrollbar-thumb {
+         height: 10px;
+         background-color: #4d4d4d;
+         }
+         [dark-scroll]::-webkit-scrollbar-thumb:hover {
+         background-color: #5a5a5a;
+         }
+         /* LOAD PROGRESS */
+         .turbolinks-progress-bar {
+         height: 3px;
+         background-color: #ff6250;
+         }
+         /* GROUPING */
+         [data-id].ui-selecting {
+         box-shadow: inset 0 0 0 1px #4285f4 !important;
+         }
+         [data-id].ui-selected {
+         box-shadow: inset 0 0 0 1px #4285f4 !important;
+         }
+         /* CURSOR */
+         body[mode='comments'] * {
+         cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00LjkxNjQ4IDIzLjQxMDlDNS40OTE1MyAyMi45ODg3IDUuOTMxNzkgMjIuMzkzNSA2LjIzMjggMjEuNjQwN0M0Ljc5MDY5IDE5LjczODMgNCAxNy4zOTMzIDQgMTQuOTk3NUM0IDguOTM0MSA4LjkzMjgyIDQgMTUuMDAyMiA0QzIxLjA3MTcgNCAyNiA4LjkzOTE5IDI2IDE1LjAwMjVDMjYgMjEuMDY1OSAyMS4wNjcyIDI2IDE0Ljk5NzggMjZDMTIuOTg5NiAyNiAxMS4wMzUzIDI1LjQ1NTcgOS4zMjM2NyAyNC40MjMxQzguNDI5NjUgMjQuOTU3MiA3LjQxNDM0IDI1LjIyNjggNi4zMDAxOCAyNS4yMjY4QzUuOTU0MjYgMjUuMjI2OCA1LjU5OTM1IDI1LjIwMTQgNS4yNTM0MiAyNS4xNDU0QzQuOTAzIDI1LjA4OTUgNC42Mjg5NiAyNC44MDQ2IDQuNTUyNTggMjQuNDE4QzQuNDc2MjEgMjQuMDI2NCA0LjYxOTk3IDIzLjYyOTYgNC45MTY0OCAyMy40MTA5WiIgZmlsbD0iI0ZGNjI1MCIvPgo8L3N2Zz4K')
+         0 24,
+         auto !important;
+         }
+         body[mode='code'] [data-id]:not(.hidden) {
+         cursor: default;
+         }
+         /* default node state */
+         body[mode='code'] [data-id]:not(.hidden), body[mode='comments'] [data-id]:not(.hidden) {
+         pointer-events: all;
+         }
+         /* is_image */
+         body[mode='code'] [data-id].is_image [data-id], body[mode='comments'] [data-id].is_image [data-id] {
+         pointer-events: none !important;
+         }
+         /* without a data-id or ignored */
+         [data-id].ignore,body[mode='code'] *:not([data-id]) {
+         pointer-events: none !important;
+         }
+         /* disable transforms for ignored elements */
+         body[mode='code'] [data-id]:hover{
+         transform: none !important;
+         }
+      </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=1366, maximum-scale=1.0">
+      <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png">
+      <meta name="og:type" content="website">
+      <meta name="twitter:card" content="photo">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <!-- <script defer="" src="https://animaapp.s3.amazonaws.com/js/typescript/jquery/3.2.0/jquery.js"></script> -->
+      <script id="anima-hotspots-script" src="hotspots.js"></script>
+      <style id="hotspots-styles">
+         .hotspot {
+         position: absolute;
+         border: 1px solid #2a9fd8;
+         background: rgba(0, 173, 255, 0.54);
+         opacity: 0;
+         z-index: -1;
+         }
+      </style>
+      <!-- <script id="s_turbo" src="https://animaapp.s3.amazonaws.com/static/turbolinks.min.js"></script> -->
+      <script id="anima-overrides-script" src="overrides.js"></script>
+      <!-- <script src="https://animaapp.s3.amazonaws.com/js/timeline.js"></script> -->
+      <style>
+         <!-- @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+         @import url("https://fonts.googleapis.com/css?family=Hind+Guntur:400,700,500"); 
+         /* The following line is used to measure usage of this code in production. For more info see our usage billing page */
+         @import url("https://px.animaapp.com/625a801bec989c0bdeba8aaf.625a801e555137a81fc81f7c.jTNqx3l.hch.png");-->
+         .screen textarea:focus,
+         .screen input:focus {
+         outline: none;
+         }
+         .screen * {
+         -webkit-font-smoothing: antialiased;
+         box-sizing: border-box;
+         }
+         .screen div {
+         -webkit-text-size-adjust: none;
+         }
+         .component-wrapper a {
+         display: contents;
+         pointer-events: auto;
+         text-decoration: none;
+         }
+         .component-wrapper * {
+         -webkit-font-smoothing: antialiased;
+         box-sizing: border-box;
+         pointer-events: none;
+         }
+         .component-wrapper a *,
+         .component-wrapper input,
+         .component-wrapper video,
+         .component-wrapper iframe {
+         pointer-events: auto;
+         }
+         .component-wrapper.not-ready,
+         .component-wrapper.not-ready * {
+         visibility: hidden !important;
+         }
+         .screen a {
+         display: contents;
+         text-decoration: none;
+         }
+         .full-width-a {
+         width: 100%;
+         }
+         .full-height-a {
+         height: 100%;
+         }
+         .container-center-vertical {
+         align-items: center;
+         display: flex;
+         flex-direction: row;
+         height: 100%;
+         pointer-events: none;
+         }
+         .container-center-vertical > * {
+         flex-shrink: 0;
+         pointer-events: auto;
+         }
+         .container-center-horizontal {
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         pointer-events: none;
+         width: 100%;
+         }
+         .container-center-horizontal > * {
+         flex-shrink: 0;
+         pointer-events: auto;
+         }
+         .auto-animated div {
+         --z-index: -1;
+         opacity: 0;
+         position: absolute;
+         }
+         .auto-animated input {
+         --z-index: -1;
+         opacity: 0;
+         position: absolute;
+         }
+         .auto-animated .container-center-vertical,
+         .auto-animated .container-center-horizontal {
+         opacity: 1;
+         }
+         .overlay {
+         display: none;
+         height: 100%;
+         opacity: 0;
+         position: fixed;
+         top: 0;
+         width: 100%;
+         }
+         .overlay.animate-appear {
+         animation: reveal 0.3s ease-in-out 1 normal forwards;
+         display: block;
+         opacity: 0;
+         }
+         .overlay.animate-disappear {
+         animation: reveal 0.3s ease-in-out 1 reverse forwards;
+         display: block;
+         opacity: 1;
+         }
+         @keyframes reveal {
+         from {
+         opacity: 0;
+         }
+         to {
+         opacity: 1;
+         }
+         }
+         .animate-nodelay {
+         animation-delay: 0s;
+         }
+         .align-self-flex-start {
+         align-self: flex-start;
+         }
+         .align-self-flex-end {
+         align-self: flex-end;
+         }
+         .align-self-flex-center {
+         align-self: flex-center;
+         }
+         .valign-text-middle {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         }
+         .valign-text-bottom {
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-end;
+         }
+         input:focus {
+         outline: none;
+         }
+         .listeners-active,
+         .listeners-active * {
+         pointer-events: auto;
+         }
+         .hidden,
+         .hidden * {
+         pointer-events: none;
+         visibility: hidden;
+         }
+         .smart-layers-pointers,
+         .smart-layers-pointers * {
+         pointer-events: auto;
+         visibility: visible;
+         }
+         .listeners-active-click,
+         .listeners-active-click * {
+         cursor: pointer;
+         }
+         * {
+         box-sizing: border-box;
+         }
+         :root { 
+         --elephant: #0e2d46;
+         --fiord: #3e596e;
+         --gallery: #f0f0f0;
+         --green-blue: #0366b4;
+         --polar: #e5eff7;
+         --white: #ffffff;
+         --font-size-l: 20px;
+         --font-size-m: 18px;
+         --font-size-s: 16px;
+         --font-size-xl: 22px;
+         --font-size-xs: 14px;
+         --font-size-xxl: 38px;
+         --font-size-xxxl: 60px;
+         --font-family-hind_guntur: "Hind Guntur", Helvetica;
+         }
+         .hindguntur-normal-white-14px {
+         color: var(--white);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-xs);
+         font-style: normal;
+         font-weight: 400;
+         }
+         .hindguntur-normal-fiord-18px {
+         color: var(--fiord);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-m);
+         font-style: normal;
+         font-weight: 400;
+         }
+         .hindguntur-normal-fiord-16px {
+         color: var(--fiord);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-s);
+         font-style: normal;
+         font-weight: 400;
+         }
+         .hindguntur-normal-white-16px {
+         color: var(--white);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-s);
+         font-style: normal;
+         font-weight: 400;
+         }
+         .hindguntur-bold-elephant-38px {
+         color: var(--elephant);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-xxl);
+         font-style: normal;
+         font-weight: 700;
+         }
+         .hindguntur-bold-fiord-20px {
+         color: var(--fiord);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-l);
+         font-style: normal;
+         font-weight: 700;
+         }
+         .hindguntur-bold-white-16px {
+         color: var(--white);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-s);
+         font-style: normal;
+         font-weight: 700;
+         }
+         .hindguntur-bold-elephant-22px {
+         color: var(--elephant);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-xl);
+         font-style: normal;
+         font-weight: 700;
+         }
+         .hindguntur-medium-elephant-20px {
+         color: var(--elephant);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-l);
+         font-style: normal;
+         font-weight: 500;
+         }
+         .border-1px-fiord {
+         border: 1px solid var(--fiord);
+         }
+         /* screen - cancer */
+         .cancer {
+         background-color: var(--white);
+         height: 5782px;
+         overflow: hidden;
+         overflow-x: hidden;
+         position: relative;
+         width: 1366px;
+         }
+         .cancer .group-306-YRVxtg {
+         background-color: transparent;
+         height: 700px;
+         left: 0px;
+         position: absolute;
+         top: 1568px;
+         width: 1366px;
+         }
+         .cancer .group-78-KRA6vQ {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-77-XqhliI {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .group-80-KRA6vQ {
+         background-color: transparent;
+         bottom: 1px;
+         height: 537px;
+         left: 0px;
+         position: absolute;
+         width: 607px;
+         }
+         .cancer .group-79-a8l1ft {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .group-82-KRA6vQ {
+         background-color: transparent;
+         bottom: 1px;
+         height: 343px;
+         left: 0px;
+         position: absolute;
+         width: 555px;
+         }
+         .cancer .group-81-zDnzA2 {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-84-KRA6vQ {
+         background-color: transparent;
+         height: 430px;
+         position: absolute;
+         right: 1px;
+         top: 1px;
+         width: 605px;
+         }
+         .cancer .group-83-5EoIMh {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-86-KRA6vQ {
+         background-color: transparent;
+         height: 206px;
+         position: absolute;
+         right: 1px;
+         top: 1px;
+         width: 531px;
+         }
+         .cancer .group-85-t3D9lQ {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .mask-group-2-YRVxtg {
+         background-color: transparent;
+         height: 768px;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 1366px;
+         }
+         .cancer .cancer-YRVxtg {
+         background-color: transparent;
+         height: 700px;
+         left: 683px;
+         object-fit: cover;
+         position: absolute;
+         top: 1568px;
+         width: 683px;
+         }
+         .cancer .rectangle-7-YRVxtg {
+         background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
+         background-color: transparent;
+         height: 700px;
+         left: 0px;
+         position: absolute;
+         top: 768px;
+         width: 568px;
+         }
+         .cancer .rectangle-50-YRVxtg {
+         background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
+         background-color: transparent;
+         height: 700px;
+         left: 798px;
+         position: absolute;
+         top: 4208px;
+         width: 568px;
+         }
+         .cancer .rectangle-51-YRVxtg {
+         background: linear-gradient(249.08deg, #008e55 -38.2%, #0366b4 129.71%);
+         background-color: transparent;
+         height: 453px;
+         left: 0px;
+         position: absolute;
+         top: 5332px;
+         width: 1366px;
+         }
+         .cancer .rectangle-37-YRVxtg {
+         background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
+         background-color: transparent;
+         height: 700px;
+         left: 0px;
+         position: absolute;
+         top: 3408px;
+         width: 568px;
+         }
+         .cancer .ysr-YRVxtg {
+         background-color: transparent;
+         height: 520px;
+         left: 198px;
+         object-fit: cover;
+         position: absolute;
+         top: 858px;
+         width: 470px;
+         }
+         .cancer .sts-YRVxtg {
+         background-color: var(--elephant);
+         height: 520px;
+         left: 728px;
+         position: absolute;
+         top: 4298px;
+         width: 470px;
+         }
+         .cancer .create-a-future-with-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 728px;
+         letter-spacing: 0.00px;
+         line-height: 48px;
+         position: absolute;
+         text-align: left;
+         top: 878px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .winning-over-cancer-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 720px;
+         letter-spacing: 0.00px;
+         line-height: 48px;
+         position: absolute;
+         text-align: center;
+         top: 3668px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .latest-news-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 98px;
+         letter-spacing: 0.00px;
+         line-height: 48px;
+         position: absolute;
+         text-align: left;
+         top: 4366px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .once-you-choose-hope-anythings-possible-YRVxtg {
+         background-color: transparent;
+         color: var(--white);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-xxxl);
+         font-style: normal;
+         font-weight: 700;
+         height: auto;
+         left: 194px;
+         letter-spacing: 0.00px;
+         line-height: 70px;
+         position: absolute;
+         text-align: center;
+         top: 457px;
+         width: 981px;
+         }
+         .cancer .im-here-for-you-YRVxtg {
+         background-color: transparent;
+         color: var(--fiord);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-m);
+         font-style: normal;
+         font-weight: 700;
+         height: auto;
+         left: 728px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: 1025px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .lorem-ipsum-is-simpl-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 728px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: 1065px;
+         width: 542px;
+         }
+         .cancer .lorem-ipsum-is-simpl-5B2xJn {
+         background-color: transparent;
+         height: auto;
+         left: 728px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: 3762px;
+         width: 542px;
+         }
+         .cancer .lorem-ipsum-is-simpl-ft2hoz {
+         background-color: transparent;
+         height: auto;
+         left: 98px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: 4507px;
+         width: 572px;
+         }
+         .cancer .lorem-ipsum-is-simpl-1Q3SIZ {
+         background-color: transparent;
+         height: auto;
+         left: 98px;
+         letter-spacing: 0.00px;
+         line-height: 24px;
+         position: absolute;
+         text-align: left;
+         top: 4462px;
+         width: 542px;
+         }
+         .cancer .ys-jagan-mohan-reddy-YRVxtg {
+         background-color: transparent;
+         color: var(--fiord);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-l);
+         font-weight: 400;
+         height: auto;
+         left: 728px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: 1300px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .span0-nAutl0 {
+         color: var(--elephant);
+         font-style: normal;
+         font-weight: 700;
+         }
+         .cancer .span1-nAutl0 {
+         }
+         .cancer .span2-nAutl0 {
+         }
+         .cancer .logo-YRVxtg {
+         background-color: transparent;
+         height: 68px;
+         left: 728px;
+         object-fit: cover;
+         position: absolute;
+         top: 1221px;
+         width: 76px;
+         }
+         .cancer .group-4-YRVxtg {
+         background-color: transparent;
+         height: 589px;
+         left: 98px;
+         position: absolute;
+         top: 1624px;
+         width: 630px;
+         }
+         .cancer .group-3-IsBneG {
+         background-color: transparent;
+         height: 120px;
+         left: 0px;
+         position: absolute;
+         top: calc(36.03% - 43px);
+         width: 100%;
+         }
+         .cancer .rectangle-4-phxOp6 {
+         background-color: var(--polar);
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .know-about-cancer-phxOp6 {
+         background-color: transparent;
+         height: 32px;
+         left: 30px;
+         letter-spacing: 0.00px;
+         line-height: 30px;
+         position: absolute;
+         text-align: left;
+         top: calc(26.14% - 8px);
+         white-space: nowrap;
+         width: 200px;
+         }
+         .cancer .learn-about-the-many-phxOp6 {
+         background-color: transparent;
+         bottom: calc(34.04% - 9px);
+         height: 26px;
+         left: 30px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         white-space: nowrap;
+         width: calc(100.00% - 71px);
+         }
+         .cancer .path-166-phxOp6 {
+         background-color: transparent;
+         bottom: calc(49.51% - 9px);
+         height: 19px;
+         object-fit: cover;
+         position: absolute;
+         right: 29px;
+         width: 10px;
+         }
+         .cancer .group-2-IsBneG {
+         background-color: transparent;
+         bottom: calc(31.98% - 38px);
+         height: 120px;
+         left: 0px;
+         position: absolute;
+         width: 100%;
+         }
+         .cancer .rectangle-5-5qJmwz {
+         background-color: var(--polar);
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .newly-diagnosed-5qJmwz {
+         background-color: transparent;
+         height: 32px;
+         left: 30px;
+         letter-spacing: 0.00px;
+         line-height: 30px;
+         position: absolute;
+         text-align: left;
+         top: calc(26.14% - 8px);
+         white-space: nowrap;
+         width: 193px;
+         }
+         .cancer .use-our-guide-to-hel-5qJmwz {
+         background-color: transparent;
+         bottom: calc(34.04% - 9px);
+         height: 26px;
+         left: 30px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         white-space: nowrap;
+         width: calc(100.00% - 69px);
+         }
+         .cancer .path-167-5qJmwz {
+         background-color: transparent;
+         bottom: calc(49.51% - 9px);
+         height: 19px;
+         object-fit: cover;
+         position: absolute;
+         right: 29px;
+         width: 10px;
+         }
+         .cancer .group-1-IsBneG {
+         background-color: transparent;
+         bottom: 0px;
+         height: 120px;
+         left: 0px;
+         position: absolute;
+         width: 100%;
+         }
+         .cancer .rectangle-6-pjKgQP {
+         background-color: var(--polar);
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .getting-treatment-pjKgQP {
+         background-color: transparent;
+         height: 32px;
+         left: 30px;
+         letter-spacing: 0.00px;
+         line-height: 30px;
+         position: absolute;
+         text-align: left;
+         top: calc(26.14% - 8px);
+         white-space: nowrap;
+         width: 192px;
+         }
+         .cancer .find-the-information-pjKgQP {
+         background-color: transparent;
+         bottom: calc(34.04% - 9px);
+         height: 26px;
+         left: 30px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         white-space: nowrap;
+         width: calc(100.00% - 84px);
+         }
+         .cancer .path-168-pjKgQP {
+         background-color: transparent;
+         bottom: calc(49.51% - 9px);
+         height: 19px;
+         object-fit: cover;
+         position: absolute;
+         right: 29px;
+         width: 10px;
+         }
+         .cancer .cancer-is-a-part-of-IsBneG {
+         background-color: transparent;
+         color: var(--white);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-xxl);
+         font-style: normal;
+         font-weight: 700;
+         height: 101px;
+         left: 0px;
+         letter-spacing: 0.00px;
+         line-height: 48px;
+         position: absolute;
+         text-align: left;
+         top: -5px;
+         width: calc(100.00% - 88px);
+         }
+         .cancer .maintain-a-healthy-l-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 348px;
+         letter-spacing: 0.00px;
+         line-height: 48px;
+         position: absolute;
+         text-align: center;
+         top: 2363px;
+         width: 672px;
+         }
+         .cancer .if-youre-experiencin-YRVxtg {
+         background-color: transparent;
+         color: #0c3d64;
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-l);
+         font-style: normal;
+         font-weight: 700;
+         height: auto;
+         left: 366px;
+         letter-spacing: 0.00px;
+         line-height: 24px;
+         position: absolute;
+         text-align: center;
+         top: 3182px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .a-lump-in-the-breast-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 366px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: center;
+         top: 2736px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .pain-of-breast-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 871px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: center;
+         top: 2736px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .bloody-discharge-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 943px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: center;
+         top: 2904px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .swelling-of-all-or-part-of-breast-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 866px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: center;
+         top: 3088px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .dimples-or-depressed-skin-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 246px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: center;
+         top: 2904px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .skin-irritation-or-texture-change-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 269px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: center;
+         top: 3088px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .group-13-YRVxtg {
+         background-color: transparent;
+         height: 421px;
+         left: 487px;
+         position: absolute;
+         top: 2676px;
+         width: 393px;
+         }
+         .cancer .group-8-cxFNwJ {
+         background-color: transparent;
+         height: calc(100.00% - 11px);
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-10-cxFNwJ {
+         background-color: transparent;
+         height: calc(100.00% - 71px);
+         left: 40px;
+         position: absolute;
+         top: 9px;
+         width: calc(100.00% - 86px);
+         }
+         .cancer .group-9-wTaTLQ {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-12-cxFNwJ {
+         background-color: transparent;
+         height: calc(100.00% - 14px);
+         left: 11px;
+         object-fit: cover;
+         position: absolute;
+         top: 14px;
+         width: calc(100.00% - 61px);
+         }
+         .cancer .oral-cancer-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 455px;
+         letter-spacing: 0.00px;
+         line-height: 24px;
+         position: absolute;
+         text-align: center;
+         top: 2528px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .breast-cancer-YRVxtg {
+         background-color: transparent;
+         color: var(--elephant);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-l);
+         font-style: normal;
+         font-weight: 700;
+         height: auto;
+         left: 619px;
+         letter-spacing: 0.00px;
+         line-height: 24px;
+         position: absolute;
+         text-align: center;
+         top: 2528px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .cervical-cancer-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 802px;
+         letter-spacing: 0.00px;
+         line-height: 24px;
+         position: absolute;
+         text-align: center;
+         top: 2528px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .rectangle-20-YRVxtg {
+         background-color: var(--green-blue);
+         border-radius: 30px;
+         height: 6px;
+         left: 622px;
+         position: absolute;
+         top: 2564px;
+         width: 123px;
+         }
+         .cancer .group-19-YRVxtg {
+         background-color: transparent;
+         height: 89px;
+         left: 393px;
+         position: absolute;
+         top: 2636px;
+         width: 90px;
+         }
+         .cancer .group-16-QXEnCW {
+         background-color: transparent;
+         height: calc(100.00% - 5px);
+         left: 3px;
+         position: absolute;
+         top: 2px;
+         width: calc(100.00% - 6px);
+         }
+         .cancer .group-15-fpFxm6 {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .group-18-QXEnCW {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-17-bH6dzs {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-34-YRVxtg {
+         background-color: transparent;
+         height: 89px;
+         left: 294px;
+         position: absolute;
+         top: 2804px;
+         width: 90px;
+         }
+         .cancer .group-33-GsKcgK {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         overflow: hidden;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-30-D4kbxE {
+         background-color: transparent;
+         height: calc(100.00% - 5px);
+         left: 3px;
+         position: absolute;
+         top: 2px;
+         width: calc(100.00% - 6px);
+         }
+         .cancer .group-29-vsiZzY {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         overflow: hidden;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-75-x6exsE {
+         background-color: transparent;
+         height: 51px;
+         left: -7px;
+         object-fit: cover;
+         position: absolute;
+         top: 4px;
+         width: 34px;
+         }
+         .cancer .path-76-x6exsE {
+         background-color: transparent;
+         height: calc(100.00% + 4px);
+         left: 14px;
+         object-fit: cover;
+         position: absolute;
+         top: -1px;
+         width: calc(100.00% - 26px);
+         }
+         .cancer .group-22-x6exsE {
+         background-color: transparent;
+         bottom: 5px;
+         height: 12px;
+         mix-blend-mode: multiply;
+         position: absolute;
+         right: calc(27.10% - 5px);
+         width: 19px;
+         }
+         .cancer .group-21-ewLy4Z {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-20-MkroDr {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .group-25-x6exsE {
+         background-color: transparent;
+         height: 23px;
+         mix-blend-mode: multiply;
+         opacity: 0.6;
+         position: absolute;
+         right: calc(49.38% - 21px);
+         top: calc(43.59% - 10px);
+         width: 42px;
+         }
+         .cancer .group-24-UhDnFH {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-23-c0bxNr {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .path-79-x6exsE {
+         background-color: transparent;
+         height: 19px;
+         left: calc(28.80% - 6px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(38.91% - 7px);
+         width: 22px;
+         }
+         .cancer .path-80-x6exsE {
+         background-color: transparent;
+         height: 18px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(27.11% - 6px);
+         top: calc(39.54% - 7px);
+         width: 22px;
+         }
+         .cancer .path-81-x6exsE {
+         background-color: transparent;
+         height: 5px;
+         left: calc(31.65% - 1px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(40.80% - 2px);
+         width: 4px;
+         }
+         .cancer .path-82-x6exsE {
+         background-color: transparent;
+         height: 2px;
+         left: calc(32.26% - 1px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(41.13% - 1px);
+         width: 2px;
+         }
+         .cancer .path-83-x6exsE {
+         background-color: transparent;
+         bottom: calc(17.33% - 1px);
+         height: 4px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(49.00% - 1px);
+         width: 3px;
+         }
+         .cancer .path-84-x6exsE {
+         background-color: transparent;
+         bottom: calc(33.98% - 8px);
+         height: 23px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(49.50% - 1px);
+         width: 1px;
+         }
+         .cancer .path-85-x6exsE {
+         background-color: transparent;
+         height: 6px;
+         left: calc(33.52% - 6px);
+         object-fit: cover;
+         position: absolute;
+         top: 4px;
+         width: 17px;
+         }
+         .cancer .path-86-x6exsE {
+         background-color: transparent;
+         height: 6px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(33.34% - 6px);
+         top: 4px;
+         width: 17px;
+         }
+         .cancer .path-87-x6exsE {
+         background-color: transparent;
+         height: 49px;
+         object-fit: cover;
+         position: absolute;
+         right: -7px;
+         top: 4px;
+         width: 32px;
+         }
+         .cancer .path-88-x6exsE {
+         background-color: transparent;
+         bottom: 6px;
+         height: 11px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(29.47% - 5px);
+         width: 16px;
+         }
+         .cancer .path-89-x6exsE {
+         background-color: transparent;
+         bottom: 7px;
+         height: 35px;
+         object-fit: cover;
+         position: absolute;
+         right: -7px;
+         width: 28px;
+         }
+         .cancer .path-90-x6exsE {
+         background-color: transparent;
+         bottom: -2px;
+         height: 10px;
+         left: calc(31.01% - 3px);
+         object-fit: cover;
+         position: absolute;
+         width: 10px;
+         }
+         .cancer .path-91-x6exsE {
+         background-color: transparent;
+         bottom: -2px;
+         height: 10px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(29.89% - 3px);
+         width: 10px;
+         }
+         .cancer .group-28-x6exsE {
+         background-color: transparent;
+         bottom: -3px;
+         height: 13px;
+         left: calc(23.40% - 4px);
+         mix-blend-mode: multiply;
+         position: absolute;
+         width: 15px;
+         }
+         .cancer .group-27-MsXrFx {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-26-8NZrn9 {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-93-x6exsE {
+         background-color: transparent;
+         bottom: -2px;
+         height: 12px;
+         left: calc(22.76% - 3px);
+         object-fit: cover;
+         position: absolute;
+         width: 15px;
+         }
+         .cancer .path-94-x6exsE {
+         background-color: transparent;
+         bottom: 1px;
+         height: 39px;
+         left: -7px;
+         object-fit: cover;
+         position: absolute;
+         width: 24px;
+         }
+         .cancer .path-95-x6exsE {
+         background-color: transparent;
+         height: 8px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(29.72% - 2px);
+         top: calc(40.35% - 3px);
+         width: 8px;
+         }
+         .cancer .path-96-x6exsE {
+         background-color: transparent;
+         height: 5px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(30.72% - 1px);
+         top: calc(40.80% - 2px);
+         width: 4px;
+         }
+         .cancer .path-97-x6exsE {
+         background-color: transparent;
+         height: 2px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(31.36% - 1px);
+         top: calc(41.13% - 1px);
+         width: 2px;
+         }
+         .cancer .group-32-D4kbxE {
+         background-color: transparent;
+         height: 100%;
+         left: -4px;
+         position: absolute;
+         top: 0px;
+         width: calc(100.00% + 8px);
+         }
+         .cancer .group-31-R27qDa {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-39-YRVxtg {
+         background-color: transparent;
+         height: 89px;
+         left: 335px;
+         position: absolute;
+         top: 2995px;
+         width: 90px;
+         }
+         .cancer .group-36-Y0HNKD {
+         background-color: transparent;
+         height: calc(100.00% - 5px);
+         left: 3px;
+         position: absolute;
+         top: 2px;
+         width: calc(100.00% - 6px);
+         }
+         .cancer .group-35-BMCsjx {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-38-Y0HNKD {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-37-d482QH {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-48-YRVxtg {
+         background-color: transparent;
+         height: 89px;
+         left: 875px;
+         position: absolute;
+         top: 2636px;
+         width: 89px;
+         }
+         .cancer .group-47-Bm7U9x {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         overflow: hidden;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-44-bELqYh {
+         background-color: transparent;
+         height: calc(100.00% - 4px);
+         left: 2px;
+         position: absolute;
+         top: 2px;
+         width: calc(100.00% - 4px);
+         }
+         .cancer .group-43-JCF8Ov {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         overflow: hidden;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-111-ETxJ11 {
+         background-color: transparent;
+         height: 38px;
+         left: 7px;
+         object-fit: cover;
+         position: absolute;
+         top: -3px;
+         width: 39px;
+         }
+         .cancer .path-112-ETxJ11 {
+         background-color: transparent;
+         height: 15px;
+         object-fit: cover;
+         position: absolute;
+         right: 8px;
+         top: -8px;
+         width: 28px;
+         }
+         .cancer .path-113-ETxJ11 {
+         background-color: transparent;
+         height: calc(100.00% + 16px);
+         left: 18px;
+         object-fit: cover;
+         position: absolute;
+         top: -3px;
+         width: calc(100.00% - 1px);
+         }
+         .cancer .group-42-ETxJ11 {
+         background-color: transparent;
+         bottom: 12px;
+         height: 35px;
+         mix-blend-mode: multiply;
+         opacity: 0.6;
+         position: absolute;
+         right: -9px;
+         width: 62px;
+         }
+         .cancer .group-41-HOF8sj {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-40-xGMb1M {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-115-ETxJ11 {
+         background-color: transparent;
+         bottom: calc(36.06% - 10px);
+         height: 28px;
+         left: calc(49.68% - 16px);
+         object-fit: cover;
+         position: absolute;
+         width: 33px;
+         }
+         .cancer .path-116-ETxJ11 {
+         background-color: transparent;
+         bottom: calc(36.46% - 10px);
+         height: 28px;
+         object-fit: cover;
+         position: absolute;
+         right: -15px;
+         width: 33px;
+         }
+         .cancer .path-117-ETxJ11 {
+         background-color: transparent;
+         bottom: calc(39.88% - 3px);
+         height: 7px;
+         left: calc(46.99% - 3px);
+         object-fit: cover;
+         position: absolute;
+         width: 7px;
+         }
+         .cancer .path-118-ETxJ11 {
+         background-color: transparent;
+         bottom: calc(40.42% - 1px);
+         height: 3px;
+         left: calc(47.14% - 1px);
+         object-fit: cover;
+         position: absolute;
+         width: 3px;
+         }
+         .cancer .path-119-ETxJ11 {
+         background-color: transparent;
+         bottom: calc(39.88% - 3px);
+         height: 7px;
+         object-fit: cover;
+         position: absolute;
+         right: -4px;
+         width: 7px;
+         }
+         .cancer .path-120-ETxJ11 {
+         background-color: transparent;
+         bottom: calc(40.42% - 1px);
+         height: 3px;
+         object-fit: cover;
+         position: absolute;
+         right: -2px;
+         width: 3px;
+         }
+         .cancer .path-121-ETxJ11 {
+         background-color: transparent;
+         bottom: -8px;
+         height: 35px;
+         object-fit: cover;
+         position: absolute;
+         right: 25.75%;
+         width: 1px;
+         }
+         .cancer .path-122-ETxJ11 {
+         background-color: transparent;
+         height: 9px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(44.79% - 12px);
+         top: 4px;
+         width: 26px;
+         }
+         .cancer .path-123-ETxJ11 {
+         background-color: transparent;
+         height: 9px;
+         object-fit: cover;
+         position: absolute;
+         right: -7px;
+         top: 4px;
+         width: 26px;
+         }
+         .cancer .path-124-ETxJ11 {
+         background-color: transparent;
+         height: 47px;
+         object-fit: cover;
+         position: absolute;
+         right: -22px;
+         top: 8px;
+         width: 22px;
+         }
+         .cancer .group-46-bELqYh {
+         background-color: transparent;
+         height: calc(100.00% + 17px);
+         left: 0px;
+         position: absolute;
+         top: -6px;
+         width: calc(100.00% + 20px);
+         }
+         .cancer .group-45-5YFEKz {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .group-53-YRVxtg {
+         background-color: transparent;
+         height: 89px;
+         left: 959px;
+         position: absolute;
+         top: 2804px;
+         width: 90px;
+         }
+         .cancer .group-50-LWrGeI {
+         background-color: transparent;
+         height: calc(100.00% - 5px);
+         left: 3px;
+         position: absolute;
+         top: 2px;
+         width: calc(100.00% - 6px);
+         }
+         .cancer .group-49-kf62xV {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .group-52-LWrGeI {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-51-ExQBM0 {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-68-YRVxtg {
+         background-color: transparent;
+         height: 89px;
+         left: 925px;
+         position: absolute;
+         top: 2987px;
+         width: 98px;
+         }
+         .cancer .group-67-vEFvkT {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         overflow: hidden;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-64-IFsIrZ {
+         background-color: transparent;
+         height: calc(100.00% - 5px);
+         left: 7px;
+         position: absolute;
+         top: 2px;
+         width: calc(100.00% - 14px);
+         }
+         .cancer .group-63-0RSxmL {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         overflow: hidden;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-140-5iq6xm {
+         background-color: transparent;
+         height: 51px;
+         left: -7px;
+         object-fit: cover;
+         position: absolute;
+         top: 4px;
+         width: 34px;
+         }
+         .cancer .path-141-5iq6xm {
+         background-color: transparent;
+         height: calc(100.00% + 4px);
+         left: 14px;
+         object-fit: cover;
+         position: absolute;
+         top: -1px;
+         width: calc(100.00% - 26px);
+         }
+         .cancer .group-56-5iq6xm {
+         background-color: transparent;
+         bottom: 5px;
+         height: 12px;
+         mix-blend-mode: multiply;
+         position: absolute;
+         right: calc(27.10% - 5px);
+         width: 19px;
+         }
+         .cancer .group-55-W8E95N {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-54-SddGXF {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .group-59-5iq6xm {
+         background-color: transparent;
+         height: 23px;
+         mix-blend-mode: multiply;
+         opacity: 0.6;
+         position: absolute;
+         right: calc(49.38% - 21px);
+         top: calc(43.59% - 10px);
+         width: 42px;
+         }
+         .cancer .group-58-SVuddv {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-57-VBHpO9 {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 1px;
+         width: 100%;
+         }
+         .cancer .path-144-5iq6xm {
+         background-color: transparent;
+         height: 19px;
+         left: calc(28.80% - 6px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(38.91% - 7px);
+         width: 22px;
+         }
+         .cancer .path-145-5iq6xm {
+         background-color: transparent;
+         height: 18px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(27.11% - 6px);
+         top: calc(39.54% - 7px);
+         width: 22px;
+         }
+         .cancer .path-146-5iq6xm {
+         background-color: transparent;
+         height: 5px;
+         left: calc(31.65% - 1px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(40.80% - 2px);
+         width: 4px;
+         }
+         .cancer .path-147-5iq6xm {
+         background-color: transparent;
+         height: 2px;
+         left: calc(32.26% - 1px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(41.13% - 1px);
+         width: 2px;
+         }
+         .cancer .path-148-5iq6xm {
+         background-color: transparent;
+         bottom: calc(17.33% - 1px);
+         height: 4px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(49.00% - 1px);
+         width: 3px;
+         }
+         .cancer .path-149-5iq6xm {
+         background-color: transparent;
+         bottom: calc(33.98% - 8px);
+         height: 23px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(49.50% - 1px);
+         width: 1px;
+         }
+         .cancer .path-150-5iq6xm {
+         background-color: transparent;
+         height: 6px;
+         left: calc(33.52% - 6px);
+         object-fit: cover;
+         position: absolute;
+         top: 4px;
+         width: 17px;
+         }
+         .cancer .path-151-5iq6xm {
+         background-color: transparent;
+         height: 6px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(33.34% - 6px);
+         top: 4px;
+         width: 17px;
+         }
+         .cancer .path-152-5iq6xm {
+         background-color: transparent;
+         height: 49px;
+         object-fit: cover;
+         position: absolute;
+         right: -7px;
+         top: 4px;
+         width: 32px;
+         }
+         .cancer .path-153-5iq6xm {
+         background-color: transparent;
+         bottom: 6px;
+         height: 11px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(29.47% - 5px);
+         width: 16px;
+         }
+         .cancer .path-154-5iq6xm {
+         background-color: transparent;
+         bottom: 7px;
+         height: 35px;
+         object-fit: cover;
+         position: absolute;
+         right: -7px;
+         width: 28px;
+         }
+         .cancer .path-155-5iq6xm {
+         background-color: transparent;
+         bottom: -2px;
+         height: 10px;
+         left: calc(31.01% - 3px);
+         object-fit: cover;
+         position: absolute;
+         width: 10px;
+         }
+         .cancer .path-156-5iq6xm {
+         background-color: transparent;
+         bottom: -2px;
+         height: 10px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(29.89% - 3px);
+         width: 10px;
+         }
+         .cancer .group-62-5iq6xm {
+         background-color: transparent;
+         bottom: -3px;
+         height: 13px;
+         left: calc(23.40% - 4px);
+         mix-blend-mode: multiply;
+         position: absolute;
+         width: 15px;
+         }
+         .cancer .group-61-nNJrCw {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: relative;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-60-dZG0Fu {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-158-5iq6xm {
+         background-color: transparent;
+         bottom: -2px;
+         height: 12px;
+         left: calc(22.76% - 3px);
+         object-fit: cover;
+         position: absolute;
+         width: 15px;
+         }
+         .cancer .path-159-5iq6xm {
+         background-color: transparent;
+         bottom: 1px;
+         height: 39px;
+         left: -7px;
+         object-fit: cover;
+         position: absolute;
+         width: 24px;
+         }
+         .cancer .path-160-5iq6xm {
+         background-color: transparent;
+         height: 8px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(29.72% - 2px);
+         top: calc(40.35% - 3px);
+         width: 8px;
+         }
+         .cancer .path-161-5iq6xm {
+         background-color: transparent;
+         height: 5px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(30.72% - 1px);
+         top: calc(40.80% - 2px);
+         width: 4px;
+         }
+         .cancer .path-162-5iq6xm {
+         background-color: transparent;
+         height: 2px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(31.36% - 1px);
+         top: calc(41.13% - 1px);
+         width: 2px;
+         }
+         .cancer .group-66-IFsIrZ {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-65-4jAVGi {
+         background-color: transparent;
+         height: 100%;
+         left: 1px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-76-YRVxtg {
+         background-color: transparent;
+         height: 520px;
+         left: 198px;
+         position: absolute;
+         top: 3498px;
+         width: 470px;
+         }
+         .cancer .mask-group-3-QvRJWt {
+         background-color: transparent;
+         height: 100%;
+         left: 0px;
+         object-fit: cover;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .group-69-QvRJWt {
+         background-color: transparent;
+         height: 60px;
+         left: calc(50.00% - 30px);
+         position: absolute;
+         top: calc(50.00% - 30px);
+         width: 60px;
+         }
+         .cancer .ellipse-1-8sCwaJ {
+         background-color: #ffffff33;
+         border: 1px solid var(--green-blue);
+         border-radius: 30px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-165-8sCwaJ {
+         background-color: transparent;
+         height: 16px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(44.01% - 5px);
+         top: calc(50.00% - 8px);
+         width: 12px;
+         }
+         .cancer .group-70-YRVxtg {
+         background-color: transparent;
+         height: 23px;
+         left: 675px;
+         position: absolute;
+         top: 705px;
+         width: 16px;
+         }
+         .cancer .path-169-Ssnvxn {
+         background-color: transparent;
+         height: calc(100.00% + 2px);
+         left: calc(50.00% - 1px);
+         object-fit: cover;
+         position: absolute;
+         top: -1px;
+         width: 2px;
+         }
+         .cancer .path-170-Ssnvxn {
+         background-color: transparent;
+         bottom: -1px;
+         height: 10px;
+         left: -1px;
+         object-fit: cover;
+         position: absolute;
+         width: calc(100.00% + 3px);
+         }
+         .cancer .logo-5B2xJn {
+         background-color: transparent;
+         height: 99px;
+         left: 98px;
+         object-fit: cover;
+         position: absolute;
+         top: 20px;
+         width: 91px;
+         }
+         .cancer .group-72-YRVxtg {
+         background-color: transparent;
+         height: 44px;
+         left: 512px;
+         position: absolute;
+         top: 20px;
+         width: 784px;
+         }
+         .cancer .patient-care-0mRkcp {
+         background-color: transparent;
+         height: 23px;
+         left: 0px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         text-align: left;
+         top: calc(50.00% - 12px);
+         white-space: nowrap;
+         width: 87px;
+         }
+         .cancer .know-about-cancer-0mRkcp {
+         background-color: transparent;
+         height: 23px;
+         left: calc(19.25% - 27px);
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         text-align: left;
+         top: calc(50.00% - 12px);
+         white-space: nowrap;
+         width: 140px;
+         }
+         .cancer .departments-0mRkcp {
+         background-color: transparent;
+         height: 23px;
+         left: calc(43.33% - 41px);
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         text-align: left;
+         top: calc(50.00% - 12px);
+         white-space: nowrap;
+         width: 94px;
+         }
+         .cancer .about-us-0mRkcp {
+         background-color: transparent;
+         height: 23px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         right: calc(40.08% - 27px);
+         text-align: left;
+         top: calc(50.00% - 12px);
+         white-space: nowrap;
+         width: 68px;
+         }
+         .cancer .online-survey-0mRkcp {
+         background-color: transparent;
+         height: 23px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         right: calc(22.08% - 22px);
+         text-align: left;
+         top: calc(50.00% - 12px);
+         white-space: nowrap;
+         width: 100px;
+         }
+         .cancer .group-71-0mRkcp {
+         background-color: transparent;
+         height: 100%;
+         position: absolute;
+         right: 0px;
+         top: 0px;
+         width: 116px;
+         }
+         .cancer .rectangle-41-RnOa9u {
+         background-color: var(--green-blue);
+         border-radius: 22px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .register-RnOa9u {
+         background-color: transparent;
+         height: 23px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         right: calc(48.28% - 28px);
+         text-align: center;
+         top: calc(50.00% - 12px);
+         white-space: nowrap;
+         width: 58px;
+         }
+         .cancer .group-73-YRVxtg {
+         background-color: transparent;
+         height: 59px;
+         left: 1238px;
+         position: absolute;
+         top: 2853px;
+         width: 60px;
+         }
+         .cancer .ellipse-2-4Oxkee {
+         background-color: var(--white);
+         border-radius: 30px/29.5px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-171-4Oxkee {
+         background-color: transparent;
+         height: 19px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(49.41% - 5px);
+         top: calc(50.00% - 9px);
+         width: 10px;
+         }
+         .cancer .group-74-YRVxtg {
+         background-color: transparent;
+         height: 59px;
+         left: 68px;
+         position: absolute;
+         top: 2853px;
+         width: 60px;
+         }
+         .cancer .ellipse-2-BGxDE0 {
+         background-color: var(--white);
+         border-radius: 30px/29.5px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-171-BGxDE0 {
+         background-color: transparent;
+         height: 19px;
+         left: calc(49.41% - 5px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(50.00% - 9px);
+         width: 10px;
+         }
+         .cancer .group-75-YRVxtg {
+         background-color: transparent;
+         height: 60px;
+         left: 581px;
+         position: absolute;
+         top: 3248px;
+         width: 205px;
+         }
+         .cancer .rectangle-41-1PxMxL {
+         background-color: var(--green-blue);
+         border-radius: 30px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .get-help-1PxMxL {
+         background-color: transparent;
+         color: var(--white);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-m);
+         font-style: normal;
+         font-weight: 400;
+         height: 26px;
+         letter-spacing: 0.00px;
+         line-height: 24px;
+         position: absolute;
+         right: calc(48.89% - 34px);
+         text-align: center;
+         top: calc(50.00% - 13px);
+         white-space: nowrap;
+         width: 70px;
+         }
+         .cancer .instagram-YRVxtg {
+         background-color: transparent;
+         height: 40px;
+         left: 1178px;
+         position: absolute;
+         top: 5566px;
+         width: 40px;
+         }
+         .cancer .oval-Cdi6oy {
+         background-color: var(--white);
+         border-radius: 20px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .instagram-Cdi6oy {
+         background-color: transparent;
+         bottom: calc(50.00% - 9px);
+         height: 18px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(50.00% - 9px);
+         width: 18px;
+         }
+         .cancer .youtube-YRVxtg {
+         background-color: transparent;
+         height: 40px;
+         left: 1118px;
+         position: absolute;
+         top: 5566px;
+         width: 40px;
+         }
+         .cancer .oval-T83pDS {
+         background-color: var(--white);
+         border-radius: 20px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .youtube-T83pDS {
+         background-color: transparent;
+         height: 18px;
+         left: 8px;
+         object-fit: cover;
+         position: absolute;
+         top: calc(50.00% - 9px);
+         width: calc(100.00% - 17px);
+         }
+         .cancer .twitter-YRVxtg {
+         background-color: transparent;
+         height: 40px;
+         left: 1058px;
+         position: absolute;
+         top: 5566px;
+         width: 40px;
+         }
+         .cancer .oval-cm4LO1 {
+         background-color: var(--white);
+         border-radius: 20px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .twitter-cm4LO1 {
+         background-color: transparent;
+         bottom: calc(50.00% - 9px);
+         height: 18px;
+         left: 9px;
+         object-fit: cover;
+         position: absolute;
+         width: calc(100.00% - 18px);
+         }
+         .cancer .facebook-YRVxtg {
+         background-color: transparent;
+         height: 40px;
+         left: 998px;
+         position: absolute;
+         top: 5566px;
+         width: 40px;
+         }
+         .cancer .oval-CVppBM {
+         background-color: var(--white);
+         border-radius: 20px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .facebook-CVppBM {
+         background-color: transparent;
+         bottom: calc(50.00% - 9px);
+         height: 18px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(48.39% - 4px);
+         width: 9px;
+         }
+         .cancer .patient-care-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         text-align: left;
+         top: 5382px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .know-about-cancer-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 698px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         text-align: left;
+         top: 5382px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .departments-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 998px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         text-align: left;
+         top: 5382px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .stay-connected-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 998px;
+         letter-spacing: 0.00px;
+         line-height: 22px;
+         position: absolute;
+         text-align: left;
+         top: 5526px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .clinics-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5422px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .what-is-cancer-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 698px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5422px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .department-1-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 998px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5422px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .causes-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 698px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5448px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .department-2-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 998px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5448px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .signs-and-symptoms-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 698px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5476px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .types-of-cancer-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 698px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5502px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .diagnosis-and-treatment-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 698px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5530px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .prevention-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 698px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5556px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .outpatient-services-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5448px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .inpatient-services-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5476px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .diagnostic-services-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5502px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .therapeutic-services-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5530px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .community-oncology-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5556px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .outreach-services-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5584px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .telemedicines-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 398px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: left;
+         top: 5610px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .copyright-2022-xxxxxxxxx-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 588px;
+         letter-spacing: 0.00px;
+         line-height: 20px;
+         position: absolute;
+         text-align: center;
+         top: 5724px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .pngfindcom-flag-of-india-png-408105-YRVxtg {
+         background-color: transparent;
+         height: 242px;
+         left: 98px;
+         object-fit: cover;
+         position: absolute;
+         top: 5382px;
+         width: 222px;
+         }
+         .cancer .did-you-know-YRVxtg {
+         background-color: transparent;
+         height: auto;
+         left: 348px;
+         letter-spacing: 0.00px;
+         line-height: 48px;
+         position: absolute;
+         text-align: center;
+         top: 5003px;
+         white-space: nowrap;
+         width: 672px;
+         }
+         .cancer .know-more-about-cancer-YRVxtg {
+         background-color: transparent;
+         color: var(--green-blue);
+         font-family: var(--font-family-hind_guntur);
+         font-size: var(--font-size-m);
+         font-style: normal;
+         font-weight: 400;
+         height: auto;
+         left: 1074px;
+         letter-spacing: 0.00px;
+         line-height: 24px;
+         position: absolute;
+         text-align: left;
+         text-decoration: underline;
+         top: 5028px;
+         white-space: nowrap;
+         width: auto;
+         }
+         .cancer .group-423-YRVxtg {
+         background-color: transparent;
+         height: 123px;
+         left: 98px;
+         position: absolute;
+         top: 5109px;
+         width: 370px;
+         }
+         .cancer .rectangle-14-L1yXgi {
+         background-color: var(--gallery);
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .in-india-more-than-1-L1yXgi {
+         background-color: transparent;
+         height: 55px;
+         left: 40px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: calc(39.71% - 22px);
+         width: calc(100.00% - 68px);
+         }
+         .cancer .group-424-YRVxtg {
+         background-color: transparent;
+         height: 123px;
+         left: 498px;
+         position: absolute;
+         top: 5109px;
+         width: 370px;
+         }
+         .cancer .rectangle-39-bIGzPA {
+         background-color: var(--gallery);
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .the-most-common-male-bIGzPA {
+         background-color: transparent;
+         height: 55px;
+         left: 40px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: calc(39.71% - 22px);
+         width: calc(100.00% - 68px);
+         }
+         .cancer .group-425-YRVxtg {
+         background-color: transparent;
+         height: 123px;
+         left: 898px;
+         position: absolute;
+         top: 5109px;
+         width: 370px;
+         }
+         .cancer .rectangle-40-8UzkvL {
+         background-color: var(--gallery);
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .the-most-common-fema-8UzkvL {
+         background-color: transparent;
+         height: 55px;
+         left: 40px;
+         letter-spacing: 0.00px;
+         line-height: 26px;
+         position: absolute;
+         text-align: left;
+         top: calc(39.71% - 22px);
+         width: calc(100.00% - 68px);
+         }
+         .cancer .group-426-YRVxtg {
+         background-color: transparent;
+         height: 59px;
+         left: 1238px;
+         position: absolute;
+         top: 5141px;
+         width: 60px;
+         }
+         .cancer .ellipse-2-jKp0x7 {
+         background-color: var(--white);
+         border-radius: 30px/29.5px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-171-jKp0x7 {
+         background-color: transparent;
+         height: 19px;
+         object-fit: cover;
+         position: absolute;
+         right: calc(49.41% - 5px);
+         top: calc(50.00% - 9px);
+         width: 10px;
+         }
+         .cancer .group-427-YRVxtg {
+         background-color: transparent;
+         height: 59px;
+         left: 68px;
+         position: absolute;
+         top: 5141px;
+         width: 60px;
+         }
+         .cancer .ellipse-2-Wr3XC6 {
+         background-color: var(--white);
+         border-radius: 30px/29.5px;
+         height: 100%;
+         left: 0px;
+         position: absolute;
+         top: 0px;
+         width: 100%;
+         }
+         .cancer .path-171-Wr3XC6 {
+         background-color: transparent;
+         height: 19px;
+         left: calc(49.41% - 5px);
+         object-fit: cover;
+         position: absolute;
+         top: calc(50.00% - 9px);
+         width: 10px;
+         }
+      </style>
+      <!-- <script id="anime-js-script" src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js" integrity="sha256-98Q574VkbV+PkxXCKSgL6jVq9mrVbS7uCdA+vt0sLS8=" crossorigin="anonymous"></script><script id="imgloaded-js-script" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script> -->
+      <style id="action-links-styles">
+         @import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+         #anima-interface{
+         transition: all 0.5s ease-in-out;
+         }
+         #anima-watermark {
+         transition: all 0.5s ease-in-out;
+         display: none;
+         }
+         #anima-watermark-link{
+         position: fixed;
+         bottom:20px;
+         height:30px;
+         border-radius: 1000px;
+         background: #3B3B3B;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         cursor:pointer;
+         user-select:none;
+         transition: width 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+         text-decoration:none;
+         color:#fff;
+         padding:8px 16px 8px 11px;
+         font-family:Mulish, sans-serif;
+         font-size:12px;
+         }
+         #anima-watermark-link .text {
+         margin-left: 6px;
+         }
+         .omniview-anima-action-links .link{
+         height: 30px;
+         width: 30px;
+         border-radius: 1000px;
+         background: #3B3B3B;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         cursor:pointer;
+         user-select:none;
+         transition: width 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+         text-decoration:none;
+         color:#fff;
+         }
+         .omniview-anima-action-links #comment-link .text,.omniview-anima-action-links #code-link .text{
+         display:none;
+         font-size:12px;
+         margin-right:5px;
+         }
+         .omniview-anima-action-links #comment-link:hover,.omniview-anima-action-links #code-link:hover{
+         width:105px;
+         }
+         .omniview-anima-action-links #comment-link.pop-active,.omniview-anima-action-links #code-link.pop-active{
+         width:105px;
+         background: #FF6250;
+         }
+         .omniview-anima-action-links #comment-link.pop-active .text,.omniview-anima-action-links #code-link.pop-active .text{
+         display:block
+         }
+         .omniview-anima-action-links #comment-link:hover .text,.omniview-anima-action-links #code-link:hover .text{
+         display:block;
+         }
+         .link.navigation{
+         position:fixed;
+         left:50%;
+         transform:translateX(-50%);
+         width:auto;
+         height:32px;
+         color:#fff;
+         font-size:12px;
+         cursor:default;
+         padding:0 5px;
+         }
+         .link.navigation .icon{
+         margin:0 6px;
+         fill:none;
+         stroke:currentColor;
+         cursor:pointer;
+         }
+         .link.navigation .icon.disabled{
+         opacity:0.5;
+         cursor:default;
+         }
+         .link.navigation .home-icon{
+         margin-left:6px;
+         fill:currentColor;
+         stroke:currentColor;
+         cursor:pointer;
+         }
+         .omniview-anima-action-links .restart{
+         height: 30px;
+         padding:0 12px;
+         background: #3B3B3B;
+         border-radius: 1000px;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         cursor:pointer;
+         color:#f1f1f1;
+         font-size: 12px;
+         }
+         .omniview-anima-action-links{
+         display:flex;
+         align-items:center;
+         position:fixed;
+         bottom:20px;
+         right:20px;
+         font-family:Mulish, sans-serif;
+         transition: all 0.5s ease-in-out;
+         opacity:1;
+         }
+         .omniview-anima-action-links > * + *{
+         margin-right: 0;
+         margin-left: 10px;
+         }
+         .idle{
+         opacity:0;
+         pointer-events:none;
+         }
+         #popoverOpener {
+         position: absolute;
+         left: 50%;
+         margin-left: -10vw;
+         text-align: center;
+         top: 45vh;
+         width: 20vw;
+         }
+         .popover {
+         position: absolute;
+         top: 0;
+         left: 0;
+         z-index: 1060;
+         display: none;
+         font-family: "sans-serif";
+         font-size: 14px;
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 5px 10px rgba(0,0,0,.2);
+         }
+         .popover.top {
+         margin-top: -12px
+         }
+         .popover.right {
+         margin-left: 10px
+         }
+         .popover.bottom {
+         margin-top: 10px
+         }
+         .popover.left {
+         margin-left: -10px
+         }
+         .popover-title {
+         padding: 8px 14px;
+         margin: 0;
+         font-size: 14px;
+         background-color: #f7f7f7;
+         border-bottom: 1px solid #ebebeb;
+         border-radius: 5px 5px 0 0
+         }
+         .popover-content {
+         height: 100%;
+         width: 100%;
+         display:flex;
+         overflow:hidden;
+         font-family:Mulish, sans-serif;
+         }
+         .popover>.arrow,.popover>.arrow:after {
+         position: absolute;
+         display: block;
+         width: 0;
+         height: 0;
+         border-color: transparent;
+         border-style: solid
+         }
+         .popover>.arrow {
+         border-width: 11px
+         }
+         .popover>.arrow:after {
+         content: "";
+         border-width: 10px
+         }
+         .popover.top>.arrow {
+         bottom: -11px;
+         left: 50%;
+         margin-left: -11px;
+         border-top-color: #999;
+         border-top-color: rgba(0,0,0,.25);
+         border-bottom-width: 0
+         }
+         .popover.top>.arrow:after {
+         bottom: 1px;
+         margin-left: -10px;
+         content: " ";
+         border-top-color: #fff;
+         border-bottom-width: 0
+         }
+         .popover.right>.arrow {
+         top: 50%;
+         left: -11px;
+         margin-top: -11px;
+         border-right-color: #999;
+         border-right-color: rgba(0,0,0,.25);
+         border-left-width: 0
+         }
+         .popover.right>.arrow:after {
+         bottom: -10px;
+         left: 1px;
+         content: " ";
+         border-right-color: #fff;
+         border-left-width: 0
+         }
+         .popover.bottom>.arrow {
+         top: -11px;
+         left: 50%;
+         margin-left: -11px;
+         border-top-width: 0;
+         border-bottom-color: #999;
+         border-bottom-color: rgba(0,0,0,.25)
+         }
+         .popover.bottom>.arrow:after {
+         top: 1px;
+         margin-left: -10px;
+         content: " ";
+         border-top-width: 0;
+         border-bottom-color: #fff
+         }
+         .popover.left>.arrow {
+         top: 50%;
+         right: -11px;
+         margin-top: -11px;
+         border-right-width: 0;
+         border-left-color: #999;
+         border-left-color: rgba(0,0,0,.25)
+         }
+         .popover.left>.arrow:after {
+         right: 1px;
+         bottom: -10px;
+         content: " ";
+         border-right-width: 0;
+         border-left-color: #fff
+         }
+         #anima-comment-popover,#anima-code-popover{
+         background:#333333;
+         color:#fff;
+         }
+         #anima-comment-popover.top>.arrow,#anima-comment-popover.top>.arrow:after,#anima-code-popover.top>.arrow:after,#anima-code-popover.top>.arrow {
+         border-top-color:#333;  
+         }
+         #anima-comment-popover .btn,#anima-code-popover .btn {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         padding: 6px 20px;
+         background: #FF6250;
+         color:#fff;
+         border-radius: 100px;
+         width: max-content;
+         text-decoration:none;
+         }
+         @media screen and (max-width: 550px) {
+         #anima-watermark-link {
+         padding: 6px !important;
+         }
+         #anima-watermark-link .text {
+         display: none !important;
+         }
+         }
+      </style>
+   </head>
+   <body style="margin: 0px; background: rgb(255, 255, 255); overflow-x: hidden;" data-new-gr-c-s-check-loaded="14.1056.0" data-gr-ext-installed="" dark-scroll="">
+      <input type="hidden" id="anPageName" name="page" value="cancer">
+      <div class="container-center-horizontal">
+         <div class="cancer screen" data-id="864bfd99-8f3f-421f-a760-186f02fb984c">
+            <div class="group-306-YRVxtg" data-id="929cf044-c0a1-4f96-b017-860471377efd">
+               <div class="group-78-KRA6vQ" data-id="60abdb70-3c34-43f2-97c0-16539390a099"><img class="group-77-XqhliI" data-id="da7ed50a-7112-41fa-95c3-9bb975851828" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-77@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-77@1x.png"></div>
+               <div class="group-80-KRA6vQ" data-id="8ae3b535-6524-4f62-b0a5-37fb1bae4847"><img class="group-79-a8l1ft" data-id="74b7562b-6818-4208-a73f-6af552d32b5a" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-79@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-79@1x.png"></div>
+               <div class="group-82-KRA6vQ" data-id="a47c0e47-6f08-46bf-91c4-4b5e59276cfa"><img class="group-81-zDnzA2" data-id="e2dcfcf7-860c-46a2-9b8b-8e5527982acc" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-81@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-81@1x.png"></div>
+               <div class="group-84-KRA6vQ" data-id="d7d4dfa1-b401-4444-a70f-14c09aa2298d"><img class="group-83-5EoIMh" data-id="8692ff40-6a8a-4146-a2cf-99f3ff9e9707" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-83@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-83@1x.png"></div>
+               <div class="group-86-KRA6vQ" data-id="6e7d6eea-ba07-472e-b02d-b6b9d76270f6"><img class="group-85-t3D9lQ" data-id="79119f79-89bc-441c-913d-9a0aa0696b3f" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-85@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-85@1x.png"></div>
+            </div>
+            <img class="mask-group-2-YRVxtg" data-id="244d9756-8fd8-49d0-b41d-b0e0f668b542" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/mask-group-2@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/mask-group-2@1x.png"><img class="cancer-YRVxtg" data-id="ac7ea6bc-e739-41db-85e4-8e755229adbe" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/cancer@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/cancer@1x.png">
+            <div class="rectangle-7-YRVxtg" data-id="b2bca190-2f82-4d7f-ae6a-2446beda2cee"></div>
+            <div class="rectangle-50-YRVxtg" data-id="487df818-7107-4aaa-8b00-8ee4b7441f1d"></div>
+            <div class="rectangle-51-YRVxtg" data-id="054db9cd-a62f-4657-9f32-9312ac71a253"></div>
+            <div class="rectangle-37-YRVxtg" data-id="64631cc6-c19f-4569-b6f5-6bd2ec6333fd"></div>
+            <img class="ysr-YRVxtg" data-id="dab5e1c1-f001-4849-8106-50a76ff84e2a" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/ysr@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/ysr@1x.png">
+            <div class="sts-YRVxtg" data-id="0ad30626-4ffa-4585-b9f7-3dacda7ac983"></div>
+            <div class="create-a-future-with-YRVxtg hindguntur-bold-elephant-38px" data-id="de160d8c-dc5f-4e13-b1bc-afbe633878e7">Create a future without cancer.<br>The time to act is now.</div>
+            <div class="winning-over-cancer-YRVxtg hindguntur-bold-elephant-38px" data-id="191b2c41-59d0-450e-9788-39e16733422f">Winning Over Cancer</div>
+            <div class="latest-news-YRVxtg hindguntur-bold-elephant-38px" data-id="74bef3bf-8584-484e-9cbc-a3fa8da779a9">Latest News</div>
+            <h1 class="once-you-choose-hope-anythings-possible-YRVxtg" data-id="59030af9-dd9e-4b65-8f2a-c78cacc0188b">ONCE YOU CHOOSE HOPE, ANYTHING’S POSSIBLE.</h1>
+            <div class="im-here-for-you-YRVxtg" data-id="8165118e-80bd-46f4-a51a-8a0cbd37e757">“I’m here for you…</div>
+            <div class="lorem-ipsum-is-simpl-YRVxtg hindguntur-normal-fiord-18px" data-id="f264ab0c-8c27-4219-955d-3a20cbdf960c">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley</div>
+            <div class="lorem-ipsum-is-simpl-5B2xJn hindguntur-normal-fiord-18px" data-id="bc45c244-7808-420d-8533-efb590aef2df">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley</div>
+            <div class="lorem-ipsum-is-simpl-ft2hoz hindguntur-normal-fiord-18px" data-id="528d525f-90b9-499a-8688-2db704549b49">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley</div>
+            <div class="lorem-ipsum-is-simpl-1Q3SIZ hindguntur-bold-fiord-20px" data-id="29f63bde-78cb-46cc-8471-f45ebe8137ac">Lorem Ipsum is simply dummy text of the printing </div>
+            <div class="ys-jagan-mohan-reddy-YRVxtg" data-id="ea79f3d1-b42c-42fb-b266-1ab0f5240bce"><span class="span0-nAutl0">-Y.S. Jagan Mohan Reddy</span><span class="span1-nAutl0 hindguntur-bold-fiord-20px">,<br></span><span class="span2-nAutl0 hindguntur-normal-fiord-18px">Chief Minister of Andhra Pradesh.</span></div>
+            <img class="logo-YRVxtg" data-id="a6a8e5c9-7a36-406c-b572-10c48994a774" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/logo@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/logo@1x.png">
+            <div class="group-4-YRVxtg" data-id="381e4b8f-c01a-4d24-8ac6-583cdf415267">
+               <div class="group-3-IsBneG" data-id="a3e3dc25-5af8-4399-af67-b3b7f8eb6eb1">
+                  <div class="rectangle-4-phxOp6" data-id="8801f49b-5bb9-4999-acf0-e7f5e874270b"></div>
+                  <div class="know-about-cancer-phxOp6 hindguntur-bold-elephant-22px" data-id="37f33d34-5260-4926-9f83-510c7a826b77">Know about cancer</div>
+                  <div class="learn-about-the-many-phxOp6 hindguntur-normal-fiord-18px" data-id="880dddc5-6262-4b99-b9b3-6f7412b3330d">Learn about the many types of cancer and how to prevent them.</div>
+                  <img class="path-166-phxOp6" data-id="c5a771ae-125b-47e3-a967-9a0feddf645f" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png">
+               </div>
+               <div class="group-2-IsBneG" data-id="d2383d8f-b70b-4003-9f87-824447534b4b">
+                  <div class="rectangle-5-5qJmwz" data-id="2e7641a6-e2aa-47bc-bae5-a433ec0032df"></div>
+                  <div class="newly-diagnosed-5qJmwz hindguntur-bold-elephant-22px" data-id="b2f577cd-df8a-4059-a317-e6fa680a4996">Newly Diagnosed?</div>
+                  <div class="use-our-guide-to-hel-5qJmwz hindguntur-normal-fiord-18px" data-id="cd61dc17-ca61-41a0-abee-83cb81b8fb3e">Use our guide to help navigate the cancer journey.</div>
+                  <img class="path-167-5qJmwz" data-id="1f6b23ca-7905-4ea6-a139-573eb07d14d1" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png">
+               </div>
+               <div class="group-1-IsBneG" data-id="a78bca24-f97b-42dd-9a9d-3e5f37a0181b">
+                  <div class="rectangle-6-pjKgQP" data-id="a5ba394c-0f2c-475c-ac26-34d67c01b89e"></div>
+                  <div class="getting-treatment-pjKgQP hindguntur-bold-elephant-22px" data-id="d05f9342-110d-45bd-ac73-022da1387300">Getting Treatment</div>
+                  <div class="find-the-information-pjKgQP hindguntur-normal-fiord-18px" data-id="e8685047-4449-4f86-9fa1-f0507dbccc19">Find the information and support you need.</div>
+                  <img class="path-168-pjKgQP" data-id="d08560f0-198b-43a7-9531-3d8d613b6509" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png">
+               </div>
+               <div class="cancer-is-a-part-of-IsBneG" data-id="5da000e5-e35c-49aa-bd4d-2eabd50a6b79">Cancer is a part of our life, but it’s not our whole life.</div>
+            </div>
+            <div class="maintain-a-healthy-l-YRVxtg hindguntur-bold-elephant-38px" data-id="839beff1-6189-4af6-837c-d05ad2da913b">Maintain a healthy lifestyle &amp; Get yourself screened regularly</div>
+            <div class="if-youre-experiencin-YRVxtg" data-id="3570622e-3e52-4244-a9fd-0ad4d852aae1">If you’re experiencing multiple symptoms, please get medical care.</div>
+            <p class="a-lump-in-the-breast-YRVxtg hindguntur-normal-fiord-16px" data-id="5eb96927-cc47-414a-8e7c-7c896ca9dc8c">A lump in the breast</p>
+            <div class="pain-of-breast-YRVxtg hindguntur-normal-fiord-16px" data-id="7ab99c1a-7d8b-4b89-964c-c279c5bc56ed">Pain of breast</div>
+            <div class="bloody-discharge-YRVxtg hindguntur-normal-fiord-16px" data-id="d1919130-d0a1-4b3e-8ec1-fc6396154793">Bloody discharge</div>
+            <p class="swelling-of-all-or-part-of-breast-YRVxtg hindguntur-normal-fiord-16px" data-id="232ed1f5-dcad-4f59-bde9-c69ba0ac8e74">Swelling of all or part of breast</p>
+            <div class="dimples-or-depressed-skin-YRVxtg hindguntur-normal-fiord-16px" data-id="8e54b794-8a6b-44ed-b6bc-f5c4548d0ee2">Dimples or depressed skin</div>
+            <p class="skin-irritation-or-texture-change-YRVxtg hindguntur-normal-fiord-16px" data-id="e307c220-efbb-4a9d-b7e6-b36cf9d85a71">Skin irritation or texture change</p>
+            <div class="group-13-YRVxtg" data-id="f4bfdb34-f6f6-47e8-bd9b-b8948f3c0d02">
+               <img class="group-8-cxFNwJ" data-id="a91216dc-713e-4584-9377-4275715ce1ad" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-8@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-8@1x.png">
+               <div class="group-10-cxFNwJ" data-id="6bc89c0a-ffc6-4299-b495-566d0b104834"><img class="group-9-wTaTLQ" data-id="5081addf-2db6-4cef-a2d2-dbb858bfc3d6" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-9-1@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-9-1@1x.png"></div>
+               <img class="group-12-cxFNwJ" data-id="1ae88b2b-57da-4b4d-947a-6e87ee453cc5" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-12@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-12@1x.png">
+            </div>
+            <div class="oral-cancer-YRVxtg hindguntur-bold-fiord-20px" data-id="ca63762d-f8c5-400f-a1dc-9f8a6012ee85">Oral Cancer</div>
+            <div class="breast-cancer-YRVxtg" data-id="ffadc62c-8beb-4dab-a48c-62eb93441485">Breast Cancer</div>
+            <div class="cervical-cancer-YRVxtg hindguntur-bold-fiord-20px" data-id="c018106e-eacf-4567-90f9-9f476cb3df2e">Cervical Cancer</div>
+            <div class="rectangle-20-YRVxtg" data-id="893079f7-8ea5-4a16-837e-ffed892c2585"></div>
+            <div class="group-19-YRVxtg" data-id="a7ca4245-2132-40ef-8a9e-c27e6f9dc332">
+               <div class="group-16-QXEnCW" data-id="0a0f678d-980b-4dbb-8720-9673c71fc7a4"><img class="group-15-fpFxm6" data-id="d79c4e58-c1bf-4207-b2c5-5d69605fcc7d" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-15@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-15@1x.png"></div>
+               <div class="group-18-QXEnCW" data-id="4f01ec2e-ae05-41e9-87a5-7b8c9bb96e60"><img class="group-17-bH6dzs" data-id="78a5a1ff-42f2-4405-aa28-fc29b8a9737f" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-17@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-17@1x.png"></div>
+            </div>
+            <div class="group-34-YRVxtg" data-id="bbe79589-6c88-4808-827f-b8bbcc58137b">
+               <div class="group-33-GsKcgK" data-id="0092fe67-24aa-461b-8ed7-d906a5bcaac3">
+                  <div class="group-30-D4kbxE" data-id="6b428c3f-47dc-4adb-97ad-07a3f4e15bb2">
+                     <div class="group-29-vsiZzY" data-id="15d5074a-bf6f-44e4-9cdb-bcbe5270781d">
+                        <img class="path-75-x6exsE" data-id="98d26c79-e239-41f1-9367-899b14e33a16" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-140@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-140@1x.png"><img class="path-76-x6exsE" data-id="58235991-0ebc-48eb-b171-db7946a79ea5" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-141@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-141@1x.png">
+                        <div class="group-22-x6exsE" data-id="237a508e-abb0-4e3e-b1f9-ae2cd50cc43b">
+                           <div class="group-21-ewLy4Z" data-id="69ebc452-d911-4b79-97ac-2b4342469127"><img class="group-20-MkroDr" data-id="6fb4d44c-0232-4d81-9b17-0de6493e0424" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-20@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-20@1x.png"></div>
+                        </div>
+                        <div class="group-25-x6exsE" data-id="d52599ac-d93e-4d57-9d3e-d0b8a337f463">
+                           <div class="group-24-UhDnFH" data-id="3f124ecd-89ee-4c7e-a9ea-d6e075a64247"><img class="group-23-c0bxNr" data-id="d5276e0f-1437-48c8-b745-f607d803f38b" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-23@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-23@1x.png"></div>
+                        </div>
+                        <img class="path-79-x6exsE" data-id="2e80ee96-ab12-47c1-b6cf-cafb0203ebd5" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-144@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-144@1x.png"><img class="path-80-x6exsE" data-id="87568cb0-72ac-406c-bf50-a0b31a5c95cc" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-145@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-145@1x.png"><img class="path-81-x6exsE" data-id="e4f99681-9fb3-41d2-94a2-e18e06ce0fdf" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-146@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-146@1x.png"><img class="path-82-x6exsE" data-id="49633b39-2d64-40e8-9b30-2448b780858d" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-147@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-147@1x.png"><img class="path-83-x6exsE" data-id="a5b81e79-63ac-4bf4-a416-b998b5431824" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-148@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-148@1x.png"><img class="path-84-x6exsE" data-id="02af69f8-5bb2-4b64-b1a0-f4a570422f3a" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-149@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-149@1x.png"><img class="path-85-x6exsE" data-id="4ce45cba-9f9a-4208-80a5-a2967e8aeffd" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-150@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-150@1x.png"><img class="path-86-x6exsE" data-id="573c99a9-6984-49af-bf02-5e80ab61a764" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-151@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-151@1x.png"><img class="path-87-x6exsE" data-id="a4a2224d-6d7e-439c-8e0f-79ab9b806ddd" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-152@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-152@1x.png"><img class="path-88-x6exsE" data-id="3cf46cf3-6ed1-4c7a-9b58-6e2ab3676636" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-153@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-153@1x.png"><img class="path-89-x6exsE" data-id="c89a883a-b0f1-46c5-9e2c-ddef82bbb3a0" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-154@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-154@1x.png"><img class="path-90-x6exsE" data-id="f8515920-9814-4e20-9257-7af88718cd86" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-155@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-155@1x.png"><img class="path-91-x6exsE" data-id="67fc79c0-6a9a-4d5b-a4a7-fde413fe4bc9" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-156@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-156@1x.png">
+                        <div class="group-28-x6exsE" data-id="625a67e3-b6bf-4cb5-b027-0be89d07f0df">
+                           <div class="group-27-MsXrFx" data-id="0b2edb31-1364-40ce-9647-7ba49bd0a0b7"><img class="group-26-8NZrn9" data-id="9f4be21d-7889-460d-8e60-4862f05c8643" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-26@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-26@1x.png"></div>
+                        </div>
+                        <img class="path-93-x6exsE" data-id="1c29dd39-4e10-4420-8fa8-07d4a2c285a8" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-158@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-158@1x.png"><img class="path-94-x6exsE" data-id="a9af51e7-594e-451f-aa40-5529d06c9a4d" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-159@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-159@1x.png"><img class="path-95-x6exsE" data-id="b8abcd65-1417-44cb-84f3-b44a05642b01" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-160@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-160@1x.png"><img class="path-96-x6exsE" data-id="166a121b-44b5-4bc1-a7c5-b3dd66c1784e" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-161@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-161@1x.png"><img class="path-97-x6exsE" data-id="52ffbf96-1265-4997-afc2-cfaa0202f874" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-162@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-162@1x.png">
+                     </div>
+                  </div>
+                  <div class="group-32-D4kbxE" data-id="24763c0d-eb56-4b8a-b88c-7349d7342790"><img class="group-31-R27qDa" data-id="3587eb93-8e54-4a7e-b3e3-74030054f832" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-31@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-31@1x.png"></div>
+               </div>
+            </div>
+            <div class="group-39-YRVxtg" data-id="a845e392-4859-46d8-b7cf-262ea805683a">
+               <div class="group-36-Y0HNKD" data-id="8264a74b-9eb6-4f59-9120-e563474ac099"><img class="group-35-BMCsjx" data-id="24f1e317-c819-46ed-b8ff-7f1952818e93" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-35@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-35@1x.png"></div>
+               <div class="group-38-Y0HNKD" data-id="b7f5ebad-1509-416a-8f01-3c86800809e6"><img class="group-37-d482QH" data-id="f142bd23-286b-45a1-8acf-08257f4930e7" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-37@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-37@1x.png"></div>
+            </div>
+            <div class="group-48-YRVxtg" data-id="9596c277-0f77-488f-844c-366aa8306623">
+               <div class="group-47-Bm7U9x" data-id="6a7a80e6-b09e-49eb-a493-d7b67289ba0c">
+                  <div class="group-44-bELqYh" data-id="8204bb38-65b6-4be6-9476-604480b086b9">
+                     <div class="group-43-JCF8Ov" data-id="b8b31326-41b2-4f8c-8207-84f8a6baafed">
+                        <img class="path-111-ETxJ11" data-id="7d15e769-1fe1-49a2-9aee-a9c5b2cbb232" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-111@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-111@1x.png"><img class="path-112-ETxJ11" data-id="e012386c-5271-4526-bfdd-2b95e37ba2cb" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-112@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-112@1x.png"><img class="path-113-ETxJ11" data-id="39584596-97e4-41ba-b2c7-d78c07274a49" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-113@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-113@1x.png">
+                        <div class="group-42-ETxJ11" data-id="40853289-f6d8-4f39-a223-907713e71cb7">
+                           <div class="group-41-HOF8sj" data-id="b1364e86-5d66-4a69-980e-dc7d188e458c"><img class="group-40-xGMb1M" data-id="906f2934-9f34-4877-b481-c4adf73b4027" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-40@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-40@1x.png"></div>
+                        </div>
+                        <img class="path-115-ETxJ11" data-id="59fa3ecd-c946-4d9f-99b4-733548bd1837" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-115@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-115@1x.png"><img class="path-116-ETxJ11" data-id="a7fe6cb5-8010-4ba6-887c-1a65ec2106a8" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-116@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-116@1x.png"><img class="path-117-ETxJ11" data-id="0abd4ed3-d7e7-4331-b4d4-2548a3b3b8fd" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-117@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-117@1x.png"><img class="path-118-ETxJ11" data-id="7231420f-a8fd-4c36-ae91-4ba00400bfca" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-118@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-118@1x.png"><img class="path-119-ETxJ11" data-id="832df009-58cc-4cb9-88c8-fde00383b999" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-119@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-119@1x.png"><img class="path-120-ETxJ11" data-id="e917d93c-4965-418d-8272-351d3a02bd38" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-118@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-118@1x.png"><img class="path-121-ETxJ11" data-id="35642202-8d94-4291-83c7-094fa0cca5d0" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-121@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-121@1x.png"><img class="path-122-ETxJ11" data-id="ce5d26c8-971e-4ce5-b04a-9b2079852f04" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-122@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-122@1x.png"><img class="path-123-ETxJ11" data-id="d58cca8b-d111-4754-adb3-6ec84a0279a1" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-123@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-123@1x.png"><img class="path-124-ETxJ11" data-id="c80401f1-d0a8-4eeb-b812-6ad077b29a2e" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-124@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-124@1x.png">
+                     </div>
+                  </div>
+                  <div class="group-46-bELqYh" data-id="60cc7025-f5a8-497c-baca-344895580b60"><img class="group-45-5YFEKz" data-id="ea162759-51f0-4615-a6a8-c98bb83dadce" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-45@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-45@1x.png"></div>
+               </div>
+            </div>
+            <div class="group-53-YRVxtg" data-id="d98aa601-b645-42bf-9178-49ea49fd0c91">
+               <div class="group-50-LWrGeI" data-id="084b6696-1a18-4a50-87f3-95c5f9c90369"><img class="group-49-kf62xV" data-id="ae5eeafe-b223-4a63-8bac-791087b36bb7" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-49@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-49@1x.png"></div>
+               <div class="group-52-LWrGeI" data-id="5b9fa0f3-6bba-427f-8965-511ed51b8705"><img class="group-51-ExQBM0" data-id="3b0e481a-9624-4efa-a667-03731f4ad0f2" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-51@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-51@1x.png"></div>
+            </div>
+            <div class="group-68-YRVxtg" data-id="7b982f29-b092-4ccb-87a1-683252c88b82">
+               <div class="group-67-vEFvkT" data-id="e5ab7bb4-8d24-4dba-9553-380b854a5a70">
+                  <div class="group-64-IFsIrZ" data-id="44c23f4a-1193-4c26-b354-c661e594f787">
+                     <div class="group-63-0RSxmL" data-id="3bc7e450-9f9f-4d43-9560-61850d891dac">
+                        <img class="path-140-5iq6xm" data-id="9f349e37-30dc-48cb-b0a7-b0da7ccbcccb" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-140@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-140@1x.png"><img class="path-141-5iq6xm" data-id="af29214d-ac46-4c4b-86bc-366b502445d2" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-141@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-141@1x.png">
+                        <div class="group-56-5iq6xm" data-id="e3e3568f-0f9e-48ba-9b21-d6050bc4e84a">
+                           <div class="group-55-W8E95N" data-id="42c01d95-60fd-4050-a3e6-ab5bd9645813"><img class="group-54-SddGXF" data-id="07ebcdb6-4ab2-43d9-b62d-32af8522b59a" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-20@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-20@1x.png"></div>
+                        </div>
+                        <div class="group-59-5iq6xm" data-id="f8e79811-c5aa-48ee-b479-6a47edc73659">
+                           <div class="group-58-SVuddv" data-id="183a51f1-1c5f-486d-8969-77e5e95a2ee1"><img class="group-57-VBHpO9" data-id="b67a5451-7ae6-49a1-be05-6bb3a9c991e2" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-23@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-23@1x.png"></div>
+                        </div>
+                        <img class="path-144-5iq6xm" data-id="58fce61f-28fb-4128-b2c2-50996e9dcce9" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-144@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-144@1x.png"><img class="path-145-5iq6xm" data-id="e1628c41-0aa8-4cb2-82ab-e796b64e3f0b" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-145@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-145@1x.png"><img class="path-146-5iq6xm" data-id="72101b2b-f397-4e79-92f0-74e2078cc267" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-146@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-146@1x.png"><img class="path-147-5iq6xm" data-id="76e3e3d8-efbd-46dd-ba01-e047e27c251b" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-147@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-147@1x.png"><img class="path-148-5iq6xm" data-id="b51c2e79-bcec-4ade-a8c4-899a07f37267" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-148@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-148@1x.png"><img class="path-149-5iq6xm" data-id="a2e37a06-d1ef-43ef-8845-c9a9c67d432b" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-149@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-149@1x.png"><img class="path-150-5iq6xm" data-id="9070e5e7-8835-4f43-80b7-446319f51df6" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-150@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-150@1x.png"><img class="path-151-5iq6xm" data-id="ed48e19e-b6f3-4084-a14d-a8d21cd4f92b" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-151@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-151@1x.png"><img class="path-152-5iq6xm" data-id="679f4a8b-7879-45dc-9d9d-eb8f38707e1f" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-152@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-152@1x.png"><img class="path-153-5iq6xm" data-id="cb043803-c7e6-4603-866d-6def3a80d871" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-153@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-153@1x.png"><img class="path-154-5iq6xm" data-id="2c958e3e-b4f3-4eb0-9c53-84a7f92ea9cc" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-154@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-154@1x.png"><img class="path-155-5iq6xm" data-id="0596b3a0-7486-4dd8-b7e2-ef577410d9b8" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-155@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-155@1x.png"><img class="path-156-5iq6xm" data-id="18c6f092-ba58-4b95-a7d0-18de11b5027e" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-156@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-156@1x.png">
+                        <div class="group-62-5iq6xm" data-id="1002c2b3-1885-42e0-a9ac-a3b22f8ad1e1">
+                           <div class="group-61-nNJrCw" data-id="12f48153-5724-4970-be0c-e419f9dcf99e"><img class="group-60-dZG0Fu" data-id="d992abc3-51a0-4ba4-90c8-00463a33bb16" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-26@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-26@1x.png"></div>
+                        </div>
+                        <img class="path-158-5iq6xm" data-id="c0e6860b-1ae4-4921-a83b-60341befa358" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-158@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-158@1x.png"><img class="path-159-5iq6xm" data-id="a9d50a29-8a47-44a6-849c-61fdd7f3d910" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-159@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-159@1x.png"><img class="path-160-5iq6xm" data-id="577ef8b0-f1d6-4cb7-ab44-cfd4635cf210" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-160@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-160@1x.png"><img class="path-161-5iq6xm" data-id="5f6f9b36-5260-4913-afc4-954c7182265b" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-161@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-161@1x.png"><img class="path-162-5iq6xm" data-id="4e6243d7-ccb8-4a20-a648-f8e36274919b" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-162@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-162@1x.png">
+                     </div>
+                  </div>
+                  <div class="group-66-IFsIrZ" data-id="1e62f0a1-b5a3-4121-90d7-4752af2870ee"><img class="group-65-4jAVGi" data-id="b83a7856-48c5-43e1-943d-94303ac1c420" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-31@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/group-31@1x.png"></div>
+               </div>
+            </div>
+            <div class="group-76-YRVxtg" data-id="b5db73a3-f87b-4ac6-8451-a7b31ae5dad7">
+               <img class="mask-group-3-QvRJWt" data-id="b010b04a-cec9-473a-bbd5-e6b5348cc175" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/mask-group-3@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/mask-group-3@1x.png">
+               <div class="group-69-QvRJWt" data-id="53fb7d4a-10a5-4aad-9d06-c6df1faba3ca">
+                  <div class="ellipse-1-8sCwaJ" data-id="1f7ec4c6-0d67-4c56-a5be-42d81a026ff4"></div>
+                  <img class="path-165-8sCwaJ" data-id="800ac0d7-6159-4081-80ed-c7da69d8c90f" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-165@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-165@1x.png">
+               </div>
+            </div>
+            <div class="group-70-YRVxtg" data-id="890b7bb9-488e-4021-88b4-9378ed6d8c82"><img class="path-169-Ssnvxn" data-id="34279819-db75-408c-8f27-19cfb9dade67" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-169@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-169@1x.png"><img class="path-170-Ssnvxn" data-id="f975a6dd-c6ea-4839-9db4-05a029b5189d" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-170@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-170@1x.png"></div>
+            <img class="logo-5B2xJn" data-id="c05d6a93-7c30-4277-894d-9a1a1832fecd" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/logo-1@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/logo-1@1x.png">
+            <div class="group-72-YRVxtg" data-id="95afba23-0b2a-4302-a8f6-77ab54905e94">
+               <div class="patient-care-0mRkcp hindguntur-normal-white-16px" data-id="b32b456e-ac77-430f-bcf6-ff072d044b8c">Patient Care</div>
+               <div class="know-about-cancer-0mRkcp hindguntur-normal-white-16px" data-id="e6e4c617-dfb4-4ea0-8dff-2a80507ed498">Know about Cancer</div>
+               <div class="departments-0mRkcp hindguntur-normal-white-16px" data-id="7481b19a-7023-4c6c-8932-6868f3357077">Departments</div>
+               <div class="about-us-0mRkcp hindguntur-normal-white-16px" data-id="4560ea64-cd48-49ce-abce-426b6b38f99a">About Us</div>
+               <div class="online-survey-0mRkcp hindguntur-normal-white-16px" data-id="b43fec26-067d-4533-9fa8-001010b8a3e0">Online Survey</div>
+               <div class="group-71-0mRkcp" data-id="436805d2-66f0-4e93-b530-04f9c70a003b">
+                  <div class="rectangle-41-RnOa9u" data-id="43a9ecb5-a1a4-493d-af4c-b5ffaaa3a744"></div>
+                  <div class="register-RnOa9u hindguntur-normal-white-16px" data-id="f274f572-ba6a-4a44-b2e4-0b739a70a5e8">Register</div>
+               </div>
+            </div>
+            <div class="group-73-YRVxtg" data-id="f5ce0668-71bb-42fe-af7f-b22122b3954a">
+               <div class="ellipse-2-4Oxkee border-1px-fiord" data-id="e8dbdab2-9418-4c13-8fa3-94ee8b11261e"></div>
+               <img class="path-171-4Oxkee" data-id="5230a023-840b-484c-9b1f-0453eb4e4958" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png">
+            </div>
+            <div class="group-74-YRVxtg" data-id="9442842f-5644-4955-8e02-373a42e6aad8">
+               <div class="ellipse-2-BGxDE0 border-1px-fiord" data-id="2c807dc3-6057-41c5-988d-0df76ec2cb9c"></div>
+               <img class="path-171-BGxDE0" data-id="170fb267-6bc9-4925-9090-14376cc122f3" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-171-1@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-171-1@1x.png">
+            </div>
+            <div class="group-75-YRVxtg" data-id="ad181a37-822a-4328-b82e-64ac68ae3667">
+               <div class="rectangle-41-1PxMxL" data-id="6a1502ee-dff4-4490-be9a-4afc0dd41670"></div>
+               <div class="get-help-1PxMxL" data-id="d9537bbf-d494-421b-b562-b5f13c01ea31">Get help</div>
+            </div>
+            <div class="instagram-YRVxtg" data-id="6c868716-c768-421d-b95a-728a726a18c2">
+               <div class="oval-Cdi6oy" data-id="c528d5a2-9dac-4e93-8b83-f9ab5b702e14"></div>
+               <img class="instagram-Cdi6oy" data-id="371f2b06-a3d1-4945-9387-164e9b0cdea4" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/instagram@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/instagram@1x.png">
+            </div>
+            <div class="youtube-YRVxtg" data-id="e88b6948-9056-4048-8fef-01e97715409e">
+               <div class="oval-T83pDS" data-id="5a42ba01-9aa3-42f3-8cf6-a0b6dfcb21a5"></div>
+               <img class="youtube-T83pDS" data-id="894af176-9e50-4706-8198-e8330a6c3be4" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/youtube@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/youtube@1x.png">
+            </div>
+            <div class="twitter-YRVxtg" data-id="1ce701d5-447a-47e2-bdc0-a580daef3ab1">
+               <div class="oval-cm4LO1" data-id="351ae511-6594-49e8-9d33-86ceb1010e8a"></div>
+               <img class="twitter-cm4LO1" data-id="3db80682-3888-4565-a5e6-79a0ce12c44d" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/twitter@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/twitter@1x.png">
+            </div>
+            <div class="facebook-YRVxtg" data-id="be8eda96-d443-4fce-850a-6e17b10d5181">
+               <div class="oval-CVppBM" data-id="92493acf-1e13-4e90-9376-34c8fbab1268"></div>
+               <img class="facebook-CVppBM" data-id="27a911dc-45b0-43f6-940d-b36001d57826" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/facebook@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/facebook@1x.png">
+            </div>
+            <div class="patient-care-YRVxtg hindguntur-bold-white-16px" data-id="301f9e6b-ea47-40ed-a48b-fdf710015bd8">Patient Care</div>
+            <div class="know-about-cancer-YRVxtg hindguntur-bold-white-16px" data-id="07b9be44-7de3-4dd5-82ba-44c303c29a13">Know about Cancer</div>
+            <div class="departments-YRVxtg hindguntur-bold-white-16px" data-id="5385112c-9a77-4666-a418-1f60d00857d3">Departments</div>
+            <div class="stay-connected-YRVxtg hindguntur-bold-white-16px" data-id="6bdd31dd-5462-41b2-8f2e-e4c6857f622a">Stay Connected</div>
+            <div class="clinics-YRVxtg hindguntur-normal-white-14px" data-id="db4926ca-1d6e-4577-8122-091b123bdfbe">Clinics</div>
+            <div class="what-is-cancer-YRVxtg hindguntur-normal-white-14px" data-id="20f2a639-4d5e-4321-9ed0-abe224ef4ff8">What is Cancer</div>
+            <div class="department-1-YRVxtg hindguntur-normal-white-14px" data-id="843f6755-5ed6-45fa-9af4-1b33302edc34">Department 1</div>
+            <div class="causes-YRVxtg hindguntur-normal-white-14px" data-id="837dcb47-f2ea-4fd9-a79c-400e672f500b">Causes</div>
+            <div class="department-2-YRVxtg hindguntur-normal-white-14px" data-id="dbe5e24e-1ffb-415f-b415-74825e536091">Department 2</div>
+            <div class="signs-and-symptoms-YRVxtg hindguntur-normal-white-14px" data-id="d275ab01-3d1a-4331-b585-ddcf3d9e5c05">Signs and Symptoms</div>
+            <div class="types-of-cancer-YRVxtg hindguntur-normal-white-14px" data-id="0070fc16-590a-4604-abb1-3abcbb05294f">Types of Cancer</div>
+            <div class="diagnosis-and-treatment-YRVxtg hindguntur-normal-white-14px" data-id="cef8601a-2e5c-47a7-a35e-06823ef31036">Diagnosis and Treatment</div>
+            <div class="prevention-YRVxtg hindguntur-normal-white-14px" data-id="7fd781ce-52e8-4cd3-888f-6beb2020b134">Prevention</div>
+            <div class="outpatient-services-YRVxtg hindguntur-normal-white-14px" data-id="bd53072b-ac7c-4235-98d9-93d7872fb3d7">Outpatient Services</div>
+            <div class="inpatient-services-YRVxtg hindguntur-normal-white-14px" data-id="e689d7e7-e768-45b5-93e0-f1b907a76438">Inpatient Services</div>
+            <div class="diagnostic-services-YRVxtg hindguntur-normal-white-14px" data-id="1c78c287-2c4b-43c5-a6c2-a640b7545251">Diagnostic Services</div>
+            <div class="therapeutic-services-YRVxtg hindguntur-normal-white-14px" data-id="24e8e9d5-f304-4e78-9c09-3a465189c545">Therapeutic Services</div>
+            <div class="community-oncology-YRVxtg hindguntur-normal-white-14px" data-id="3da528c7-1ce0-4091-b689-f205b2156c80">Community Oncology</div>
+            <div class="outreach-services-YRVxtg hindguntur-normal-white-14px" data-id="cf3b8df1-c002-4cd9-8672-379c1f42fbac">Outreach Services</div>
+            <div class="telemedicines-YRVxtg hindguntur-normal-white-14px" data-id="a2777ebc-d7af-4afb-8942-b6eebf9f6e45">Telemedicines</div>
+            <div class="copyright-2022-xxxxxxxxx-YRVxtg hindguntur-normal-white-14px" data-id="172f2b75-8982-4272-b809-f09071738b1a">Copyright © 2022 XXXXXXXXX</div>
+            <img class="pngfindcom-flag-of-india-png-408105-YRVxtg" data-id="fb40d2eb-b219-4382-989f-a287824c8300" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/pngfind-com-flag-of-india-png-408105@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/pngfind-com-flag-of-india-png-408105@1x.png">
+            <div class="did-you-know-YRVxtg hindguntur-bold-elephant-38px" data-id="438552a9-f1e2-4f38-8994-afab36962f69">Did you know?</div>
+            <div class="know-more-about-cancer-YRVxtg" data-id="c91c7784-36ba-40d3-a348-32a0704aac03">Know more about cancer</div>
+            <div class="group-423-YRVxtg" data-id="7a5b935d-0662-4a25-bb49-d1ce4da0101b">
+               <div class="rectangle-14-L1yXgi" data-id="caeee226-48c5-413d-8b24-58d9a483819e"></div>
+               <div class="in-india-more-than-1-L1yXgi hindguntur-medium-elephant-20px" data-id="bb108719-1891-4d44-a973-04e82f3c1b18">In India more than 1300 patients die everyday due to cancer</div>
+            </div>
+            <div class="group-424-YRVxtg" data-id="10717d62-8c34-43ca-a753-4f8264fae853">
+               <div class="rectangle-39-bIGzPA" data-id="11cc27fe-6039-4beb-b8c8-86bf823c9820"></div>
+               <div class="the-most-common-male-bIGzPA hindguntur-medium-elephant-20px" data-id="3e26547e-d32d-4d53-8e05-41f2b3270db8">The most common male cancer in India is head-neck cancer</div>
+            </div>
+            <div class="group-425-YRVxtg" data-id="ff5c2350-df15-4691-b37a-4bae587bc4f5">
+               <div class="rectangle-40-8UzkvL" data-id="903fbf42-4436-4f95-bd61-4ee85bb577ef"></div>
+               <div class="the-most-common-fema-8UzkvL hindguntur-medium-elephant-20px" data-id="8a69e9c6-25d3-44ca-9c1e-cd83815443e3">The most common female cancer in India is cervical cancer</div>
+            </div>
+            <div class="group-426-YRVxtg" data-id="2433d7ec-5902-4971-92e8-4ddad967d0c9">
+               <div class="ellipse-2-jKp0x7 border-1px-fiord" data-id="2ba13ca8-9873-4f30-851f-d36973e16ec0"></div>
+               <img class="path-171-jKp0x7" data-id="812042de-56e2-4c58-abe3-3f456f144377" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-166@1x.png">
+            </div>
+            <div class="group-427-YRVxtg" data-id="1c792c64-8d0b-462a-8580-0f03a7bf840e">
+               <div class="ellipse-2-Wr3XC6 border-1px-fiord" data-id="5f4dea38-d9e4-43ac-8ea7-09fabd28365a"></div>
+               <img class="path-171-Wr3XC6" data-id="2b23f48a-dc3a-4e6c-8a63-16fe95348cac" src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-171-1@1x.png" anima-src="https://cdn.animaapp.com/projects/625a8067670b0b62486d7887/releases/625a81044a30c51dd8c29392/img/path-171-1@1x.png">
+            </div>
+         </div>
+      </div>
+      <!-- <script src="launchpad-js/launchpad-banner.js" async=""></script><script defer="" src="https://animaapp.s3.amazonaws.com/static/restart-btn.min.js"></script> -->
+       <!--<div id="anima-interface" data-turbolinks-permanent="true" class="idle">
+         <div id="anima-comment-popover" class="popover top" role="tooltip" style="left: -205px; top: -220px;">
+            <div class="arrow" style="margin-left: 128px;"></div>
+            <div class="popover-content" style="align-items:center">
+               <div style="display:flex;flex-direction:column;height: 100%;padding: 20px;">
+                  <h3 style="font-size:18px;margin-bottom:10px;font-weight:500;line-height: 26px;font-family: Roslindale;">
+                     Leave feedback and collaborate
+                  </h3>
+                  <p style="font-size:12px;margin-bottom:20px;font-weight:400;line-height: 20px;">
+                     Login to your account to leave comments. Don't have an account? Sign up for free!
+                  </p>
+                  <a target="_blank" rel="noopener noreferrer" class="btn" href="https://projects.animaapp.com/p/undefined/s/undefined?mode=comments&amp;utm_campaign=add-comment&amp;utm_medium=add-comment&amp;utm_source=animaapp.io">Add comment</a>
+               </div>
+               <div style="display:flex;align-items:center;justify-content:center;padding-right:20px">
+                  <img src="https://animaapp.s3.amazonaws.com/static/comment-illustration.svg">
+               </div>
+            </div>
+         </div>
+         <div id="anima-code-popover" class="popover top" role="tooltip" style="left: -205px; top: -220px;">
+            <div class="arrow" style="margin-left: 168px;"></div>
+            <div class="popover-content" style="align-items:center">
+               <div style="display:flex;flex-direction:column;height: 100%;padding: 20px;">
+                  <h3 style="font-size:18px;margin-bottom:10px;font-weight:500;line-height: 26px;font-family: Roslindale;">
+                     Get clean code you’ll love with Anima
+                  </h3>
+                  <p style="font-size:12px;margin-bottom:20px;font-weight:400;line-height: 20px;">
+                     Login and easily export HTML, React or Vue of this prototype.
+                     Don’t have an account? Sign up for free!
+                  </p>
+                  <a target="_blank" rel="noopener noreferrer" class="btn" href="https://projects.animaapp.com/p/undefined/s/undefined?mode=code&amp;utm_campaign=get-code&amp;utm_medium=get-code&amp;utm_source=animaapp.io">
+                  Get code
+                  </a>
+               </div>
+               <img src="https://animaapp.s3.amazonaws.com/static/code-illustration.svg">
+            </div>
+         </div> 
+         <div class="omniview-anima-action-links" id="actions-wrap">
+            <div class="omniview-anima-action-links">
+               <div id="page-nav" class="link navigation" style="display: none;">
+                  <svg id="homepage-icon" class="home-icon" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M8.151 11a.25.25 0 01-.167-.436l4.349-3.913a.25.25 0 01.334 0l4.349 3.913a.25.25 0 01-.167.436H8.15zM16 12H9v4a1 1 0 001 1h5a1 1 0 001-1v-4z" fill="#fff"></path>
+                  </svg>
+                  <svg class="icon" id="arrow-left" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M15 18l-6-6 6-6" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                  <span id="page-num"></span>
+                  <svg class="icon" id="arrow-right" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+               </div>
+               <a class="link" id="comment-link" target="_blank" style="display: none;">
+                  <span class="text">Comment</span>
+                  <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M4.301 15.137a.551.551 0 01.199-.55c.314-.23.554-.554.718-.965A6.015 6.015 0 014 10 6.006 6.006 0   0110.001 4 6.006 6.006 0 0116 10.001 6.006 6.006 0 019.999 16a5.98 5.98 0 01-3.095-.86 3.165 3.165 0 01-1.65.438 3.6  3.6 0 01-.57-.044c-.191-.03-.34-.186-.383-.397z" fill="#fff"></path>
+                  </svg>
+               </a>
+               <a class="link" id="code-link" target="_blank" style="display: none;">
+                  <span class="text">Get Code</span>
+                  <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M12 15.667a1 1 0 01-.707-1.708l3.626-3.625-3.626-3.626a1 1 0 111.415-1.415l4.333 4.333a1 1 0 010 1.414l-4.333 4.333a.993.993 0 01-.707.294zM7.333 5a1 1 0 01.707 1.708l-3.626 3.625 3.627 3.626a1 1 0 11-1.415 1.415L2.293 11.04a1 1 0 010-1.415l4.333-4.333A.992.992 0 017.333 5z" fill="#fff"></path>
+                  </svg>
+               </a>
+               <div class="restart" id="restart-btn" style="display: none;">
+                  <svg style="margin-right: 6px" width="12" height="12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M6 11.817A5.017 5.017 0 01.994 6.811c0-.207.169-.375.375-.375s.375.168.375.375A4.265 4.265 0 006 11.067a4.265 4.265 0 004.256-4.256A4.265 4.265 0 006 2.555a.376.376 0 01-.375-.376c0-.206.169-.374.375-.374a5.017 5.017 0 015.006 5.006A5.017 5.017 0 016 11.817z" fill="#fff"></path>
+                     <path d="M6.75 4.237a.37.37 0 01-.263-.112l-1.65-1.65a.363.363 0 010-.525L6.487.3c.15-.15.375-.15.525 0 .15.15.15.375 0 .525L5.625 2.212 7.012 3.6c.15.15.15.375 0 .525-.056.075-.15.112-.262.112z" fill="#fff"></path>
+                  </svg>
+                  Restart
+               </div>
+            </div>
+         </div>
+      </div>-->
+       <!--<div id="anima-watermark" style="display: none;" class="idle">
+        
+         <a id="anima-watermark-link" target="_blank" href="https://www.animaapp.com?utm_campaign=public-link-banner&amp;utm_medium=public-link-banner&amp;utm_source=animaapp.io" style="right: 20px; left: auto; padding: 6px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" id="anima-logo-icon" fill="none" xmlns="http://www.w3.org/2000/svg" data-hotspot-id="hp-0">
+               <path d="M4.09293 3.00001H16.5327C16.5484 2.99976 16.5638 3.00351 16.5776 3.01092C16.5913 3.01832 16.603 3.02913 16.6114 3.04231C16.6198 3.0555 16.6247 3.07061 16.6256 3.08622C16.6265 3.10182 16.6233 3.1174 16.6165 3.13146C15.5441 5.29706 13.9276 7.14699 11.9253 8.50009C8.69117 10.6822 5.43436 10.9075 4.09389 10.9196C4.08165 10.9198 4.06949 10.9176 4.05811 10.9131C4.04672 10.9086 4.03636 10.9019 4.02761 10.8933C4.01887 10.8848 4.01192 10.8745 4.00718 10.8633C4.00244 10.852 4 10.8399 4 10.8276V3.09198C4 3.07982 4.00241 3.06778 4.00709 3.05656C4.01177 3.04534 4.01863 3.03516 4.02728 3.02661C4.03592 3.01805 4.04617 3.0113 4.05744 3.00673C4.06871 3.00217 4.08077 2.99988 4.09293 3.00001Z" fill="#FF6250"></path>
+               <path d="M6.77772 17.4446C8.31182 17.4446 9.55545 16.201 9.55545 14.6669C9.55545 13.1328 8.31182 11.8892 6.77772 11.8892C5.24363 11.8892 4 13.1328 4 14.6669C4 16.201 5.24363 17.4446 6.77772 17.4446Z" fill="#FFDF90"></path>
+               <path d="M12.4559 17.2799C11.6701 16.9799 11.2522 16.1151 11.5185 15.3496L13.6153 9.3656C13.884 8.60003 14.7387 8.22302 15.5245 8.52299C16.3103 8.82344 16.7282 9.68772 16.4619 10.4538L14.365 16.4377C14.0964 17.2033 13.2417 17.5808 12.4559 17.2799Z" fill="#3366FF"></path>
+            </svg>
+            <span class="text" style="display: none;">Made with Anima</span>
+         </a>
+      </div>-->
+      <div id="t_preload_links">
+         <link href="/cancer" rel="prefetch">
+      </div>
+      <!-- <div id="hotspots_wrapper">
+         <div class="hotspot" id="hp-0" style="top: 0px; left: 0px; z-index: -1; opacity: 0;"></div>
+      </div> -->
+   </body>
+   <!-- <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration> -->
+</html>

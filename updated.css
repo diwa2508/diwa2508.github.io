@@ -1,0 +1,91 @@
+#banner{
+    background-color: #ffff;
+    -webkit-background-size: cover;
+    background-size: cover;
+    text-align: center;
+}
+#videoBg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+video#bgvid {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+.menu-button {
+    color: var(--white);
+    font-family: var(--font-family-hind_guntur);
+    font-size: var(--font-size-s);
+    font-style: normal;
+    font-weight: 400;
+    }
+
+.cancer .patient-care-0mRkcp {
+background-color: transparent;
+height: 23px;
+left: 0px;
+letter-spacing: 0.00px;
+line-height: 22px;
+position: absolute;
+text-align: left;
+top: calc(50.00% - 12px);
+white-space: nowrap;
+width: 87px;
+}
+.cancer .know-about-cancer-0mRkcp {
+background-color: transparent;
+height: 23px;
+left: calc(19.25% - 27px);
+letter-spacing: 0.00px;
+line-height: 22px;
+position: absolute;
+text-align: left;
+top: calc(50.00% - 12px);
+white-space: nowrap;
+width: 140px;
+}
+.cancer .departments-0mRkcp {
+background-color: transparent;
+height: 23px;
+left: calc(43.33% - 41px);
+letter-spacing: 0.00px;
+line-height: 22px;
+position: absolute;
+text-align: left;
+top: calc(50.00% - 12px);
+white-space: nowrap;
+width: 94px;
+}
+.cancer .about-us-0mRkcp {
+background-color: transparent;
+height: 23px;
+letter-spacing: 0.00px;
+line-height: 22px;
+position: absolute;
+right: calc(40.08% - 27px);
+text-align: left;
+top: calc(50.00% - 12px);
+white-space: nowrap;
+width: 68px;
+}
+.cancer .online-survey-0mRkcp {
+background-color: transparent;
+height: 23px;
+letter-spacing: 0.00px;
+line-height: 22px;
+position: absolute;
+right: calc(22.08% - 22px);
+text-align: left;
+top: calc(50.00% - 12px);
+white-space: nowrap;
+width: 100px;
+}

@@ -184,13 +184,6 @@ font-size: var(--font-size-s);
 font-style: normal;
 font-weight: 400;
 }
-.hindguntur-normal-white-16px {
-color: var(--white);
-font-family: var(--font-family-hind_guntur);
-font-size: var(--font-size-s);
-font-style: normal;
-font-weight: 400;
-}
 .hindguntur-bold-elephant-38px {
 color: var(--elephant);
 font-family: var(--font-family-hind_guntur);
@@ -232,11 +225,11 @@ border: 1px solid var(--fiord);
 /* screen - cancer */
 .cancer {
 background-color: var(--white);
-height: 5782px;
+height: 100%;
 overflow: hidden;
 overflow-x: hidden;
-position: relative;
-width: 100%;
+/* position: relative;
+width: 100%; */
 }
 .cancer .group-306-YRVxtg {
 background-color: transparent;
@@ -336,27 +329,28 @@ background-color: transparent;
 height: 768px;
 left: 0px;
 object-fit: cover;
-position: absolute;
+/* position: absolute; */
 top: 0px;
 width: 100%;
 }
 .cancer .cancer-YRVxtg {
-background-color: transparent;
-height: 700px;
-left: 53%;
-object-fit: cover;
-position: absolute;
-top: 1568px;
-width: 683px;
+    background-color: transparent;
+    height: 82%;
+    left: 56%;
+    object-fit: cover;
+    position: absolute;
+    top: 230%;
+    width: 37%;
 }
+
 .cancer .rectangle-7-YRVxtg {
-background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
-background-color: transparent;
-height: 700px;
-left: 15%;
-position: absolute;
-top: 768px;
-width: 568px;
+    background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
+    background-color: transparent;
+    height: 89%;
+    left: 12%;
+    position: absolute;
+    top: 107%;
+    width: 36%;
 }
 .cancer .rectangle-50-YRVxtg {
 background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
@@ -367,15 +361,7 @@ position: absolute;
 top: 4208px;
 width: 568px;
 }
-.cancer .rectangle-51-YRVxtg {
-background: linear-gradient(249.08deg, #008e55 -38.2%, #0366b4 129.71%);
-background-color: transparent;
-height: 453px;
-left: 0px;
-position: absolute;
-top: 5332px;
-width: 100%;
-}
+
 .cancer .rectangle-37-YRVxtg {
 background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
 background-color: transparent;
@@ -386,13 +372,13 @@ top: 3408px;
 width: 568px;
 }
 .cancer .ysr-YRVxtg {
-background-color: transparent;
-height: 520px;
-left: 23%;
-object-fit: cover;
-position: absolute;
-top: 858px;
-width: 470px;
+    background-color: transparent;
+    height: 520px;
+    left: 22%;
+    object-fit: cover;
+    position: absolute;
+    top: 115%;
+    width: 30%;
 }
 .cancer .sts-YRVxtg {
 background-color: var(--elephant);
@@ -405,7 +391,7 @@ width: 470px;
 .cancer .create-a-future-with-YRVxtg {
 background-color: transparent;
 height: auto;
-left: 56%;
+left: 54%;
 letter-spacing: 0.00px;
 line-height: 48px;
 position: absolute;
@@ -462,24 +448,24 @@ font-size: var(--font-size-m);
 font-style: normal;
 font-weight: 700;
 height: auto;
-left: 56%;
+left: 54%;
 letter-spacing: 0.00px;
 line-height: 26px;
 position: absolute;
 text-align: left;
-top: 1025px;
+top: 983px;
 white-space: nowrap;
 width: auto;
 }
 .cancer .lorem-ipsum-is-simpl-YRVxtg {
 background-color: transparent;
 height: auto;
-left: 56%;
+left: 54%;
 letter-spacing: 0.00px;
 line-height: 26px;
 position: absolute;
 text-align: left;
-top: 1065px;
+top: 1028px;
 width: 542px;
 }
 .cancer .lorem-ipsum-is-simpl-5B2xJn {
@@ -522,12 +508,12 @@ font-family: var(--font-family-hind_guntur);
 font-size: var(--font-size-l);
 font-weight: 400;
 height: auto;
-left: 56%;
+left: 54%;
 letter-spacing: 0.00px;
 line-height: 26px;
 position: absolute;
 text-align: left;
-top: 1300px;
+top: 1232px;
 white-space: nowrap;
 width: auto;
 }
@@ -543,19 +529,19 @@ font-weight: 700;
 .cancer .logo-YRVxtg {
 background-color: transparent;
 height: 68px;
-left: 56%;
+left: 54%;
 object-fit: cover;
 position: absolute;
-top: 1221px;
+top: 1135px;
 width: 76px;
 }
 .cancer .group-4-YRVxtg {
-background-color: transparent;
-height: 589px;
-left: 20%;
-position: absolute;
-top: 1624px;
-width: 630px;
+    background-color: transparent;
+    height: 83%;
+    left: 18%;
+    position: absolute;
+    top: 227%;
+    width: 630px;
 }
 .cancer .group-3-IsBneG {
 background-color: transparent;
@@ -715,7 +701,7 @@ height: 101px;
 left: 0px;
 letter-spacing: 0.00px;
 line-height: 48px;
-position: absolute;
+/* position: absolute; */
 text-align: left;
 top: -5px;
 width: calc(100.00% - 88px);
@@ -1903,7 +1889,7 @@ background-color: transparent;
 height: 23px;
 left: 50%;
 position: absolute;
-top: 12%;
+top: 94%;
 width: 16px;
 }
 .cancer .path-169-Ssnvxn {
@@ -1940,66 +1926,6 @@ left: 48%;
 position: absolute;
 top: 20px;
 width: 784px;
-}
-.cancer .patient-care-0mRkcp {
-background-color: transparent;
-height: 23px;
-left: 0px;
-letter-spacing: 0.00px;
-line-height: 22px;
-position: absolute;
-text-align: left;
-top: calc(50.00% - 12px);
-white-space: nowrap;
-width: 87px;
-}
-.cancer .know-about-cancer-0mRkcp {
-background-color: transparent;
-height: 23px;
-left: calc(19.25% - 27px);
-letter-spacing: 0.00px;
-line-height: 22px;
-position: absolute;
-text-align: left;
-top: calc(50.00% - 12px);
-white-space: nowrap;
-width: 140px;
-}
-.cancer .departments-0mRkcp {
-background-color: transparent;
-height: 23px;
-left: calc(43.33% - 41px);
-letter-spacing: 0.00px;
-line-height: 22px;
-position: absolute;
-text-align: left;
-top: calc(50.00% - 12px);
-white-space: nowrap;
-width: 94px;
-}
-.cancer .about-us-0mRkcp {
-background-color: transparent;
-height: 23px;
-letter-spacing: 0.00px;
-line-height: 22px;
-position: absolute;
-right: calc(40.08% - 27px);
-text-align: left;
-top: calc(50.00% - 12px);
-white-space: nowrap;
-width: 68px;
-}
-.cancer .online-survey-0mRkcp {
-background-color: transparent;
-height: 23px;
-letter-spacing: 0.00px;
-line-height: 22px;
-position: absolute;
-right: calc(22.08% - 22px);
-text-align: left;
-top: calc(50.00% - 12px);
-white-space: nowrap;
-width: 100px;
 }
 .cancer .group-71-0mRkcp {
 background-color: transparent;

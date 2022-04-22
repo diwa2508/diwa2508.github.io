@@ -233,10 +233,10 @@ width: 100%; */
 }
 .cancer .group-306-YRVxtg {
 background-color: transparent;
-height: 700px;
+height: 100%;
 left: 0px;
 position: absolute;
-top: 1568px;
+top: 200%;
 width: 100%;
 }
 .cancer .group-78-KRA6vQ {
@@ -335,21 +335,20 @@ width: 100%;
 }
 .cancer .cancer-YRVxtg {
     background-color: transparent;
-    height: 82%;
+    height: 100%;
     left: 56%;
     object-fit: cover;
     position: absolute;
-    top: 230%;
-    width: 37%;
+    top: 200%;
+    width: 44%;
 }
 
 .cancer .rectangle-7-YRVxtg {
     background: linear-gradient(216.02deg, #008e55 13.18%, #0366b4 89.66%);
     background-color: transparent;
-    height: 89%;
-    left: 12%;
+    height: 100%;
     position: absolute;
-    top: 107%;
+    top: 100%;
     width: 36%;
 }
 .cancer .rectangle-50-YRVxtg {
@@ -540,7 +539,7 @@ width: 76px;
     height: 83%;
     left: 18%;
     position: absolute;
-    top: 227%;
+    top: 210%;
     width: 630px;
 }
 .cancer .group-3-IsBneG {
@@ -707,15 +706,15 @@ top: -5px;
 width: calc(100.00% - 88px);
 }
 .cancer .maintain-a-healthy-l-YRVxtg {
-background-color: transparent;
-height: auto;
-left: 348px;
-letter-spacing: 0.00px;
-line-height: 48px;
-position: absolute;
-text-align: center;
-top: 2363px;
-width: 672px;
+    background-color: transparent;
+    height: 100%;
+    left: 30%;
+    letter-spacing: 0.00px;
+    line-height: 48px;
+    position: absolute;
+    text-align: center;
+    top: 310%;
+    width: 672px;
 }
 .cancer .if-youre-experiencin-YRVxtg {
 background-color: transparent;
@@ -2399,13 +2398,13 @@ white-space: nowrap;
 width: auto;
 }
 .cancer .pngfindcom-flag-of-india-png-408105-YRVxtg {
-background-color: transparent;
-height: 242px;
-left: 98px;
-object-fit: cover;
-position: absolute;
-top: 5382px;
-width: 222px;
+    background-color: transparent;
+    /* height: 416%; */
+    left: 10%;
+    object-fit: cover;
+    /* position: absolute; */
+    top: 100%;
+    width: 222px;
 }
 .cancer .did-you-know-YRVxtg {
 background-color: transparent;
